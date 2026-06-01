@@ -3,7 +3,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 PYTHON_BIN="${PYTHON_BIN:-python3}"
-"$PYTHON_BIN" -S -m py_compile scripts/calculate_manse.py scripts/build_kasi_cache.py scripts/validate_caches.py
+"$PYTHON_BIN" -S -m py_compile scripts/calculate_manse.py scripts/build_kasi_cache.py scripts/validate_caches.py scripts/validate_schema.py
 "$PYTHON_BIN" -S scripts/validate_caches.py --start-year 1950 --end-year 2030 >/tmp/korean_manse_v08_validate.json
 "$PYTHON_BIN" - <<'PY'
 import json, subprocess, tempfile

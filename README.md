@@ -131,6 +131,7 @@ python3 scripts/build_kasi_cache.py --start-year 1950 --end-year 2030 --from-bun
 ```bash
 python3 -m json.tool examples/sample-output.json >/dev/null
 python3 scripts/validate_caches.py --start-year 1950 --end-year 2030
+python3 scripts/validate_schema.py
 bash tests/smoke_test.sh
 ```
 

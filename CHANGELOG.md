@@ -19,6 +19,7 @@ Adds Korean lunar calendar and leap-month input support while preserving the exi
 - Existing solar smoke tests remain unchanged in expected pillar results.
 - Added smoke tests for regular lunar dates, leap-month dates, `auto` selection, ambiguous leap-month dates, invalid lunar dates, and missing conversion cache.
 - Cache validation now checks that lunar conversion data reverse-indexes all 29,585 solar dates from 1950-01-01 through 2030-12-31.
+- CI now validates representative calculator outputs against `schemas/manse-output.schema.json`.
 
 ### Data
 

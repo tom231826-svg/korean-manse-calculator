@@ -14,8 +14,12 @@ jobs:
         with:
           python-version: "3.11"
       - name: Compile scripts
-        run: python3 -S -m py_compile scripts/calculate_manse.py scripts/build_kasi_cache.py scripts/validate_caches.py
+        run: python3 -S -m py_compile scripts/calculate_manse.py scripts/build_kasi_cache.py scripts/validate_caches.py scripts/validate_schema.py
       - name: Validate bundled caches
         run: python3 scripts/validate_caches.py --start-year 1950 --end-year 2030
+      - name: Install schema validator
+        run: python3 -m pip install jsonschema
+      - name: Validate JSON schema
+        run: python3 scripts/validate_schema.py
       - name: Run smoke tests
         run: bash tests/smoke_test.sh
