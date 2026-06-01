@@ -1,0 +1,206 @@
+{
+  "year": 2000,
+  "source_summary": {
+    "kasi": 23,
+    "skyfield": 1
+  },
+  "jeolgi": [
+    {
+      "name": "소한",
+      "hanja": "小寒",
+      "date": "2000-01-06",
+      "kst": "2000-01-06 10:01",
+      "sun_longitude": 285,
+      "source": "kasi"
+    },
+    {
+      "name": "대한",
+      "hanja": "大寒",
+      "date": "2000-01-21",
+      "kst": "2000-01-21 03:23",
+      "sun_longitude": 300,
+      "source": "kasi"
+    },
+    {
+      "name": "입춘",
+      "hanja": "立春",
+      "date": "2000-02-04",
+      "kst": "2000-02-04 21:40",
+      "sun_longitude": 315,
+      "source": "skyfield_de421",
+      "correction_note": "reference generation reference had 2000 입춘 mislabeled at 2000-02-19 and missing 우수; repaired by solar longitude fallback."
+    },
+    {
+      "name": "우수",
+      "hanja": "雨水",
+      "date": "2000-02-19",
+      "kst": "2000-02-19 17:33",
+      "sun_longitude": 330,
+      "source": "kasi",
+      "fixed_note": "reference generation reference had this entry labeled 입춘/315°; date/time corresponds to 우수/330°."
+    },
+    {
+      "name": "경칩",
+      "hanja": "驚蟄",
+      "date": "2000-03-05",
+      "kst": "2000-03-05 15:43",
+      "sun_longitude": 345,
+      "source": "kasi"
+    },
+    {
+      "name": "춘분",
+      "hanja": "春分",
+      "date": "2000-03-20",
+      "kst": "2000-03-20 16:35",
+      "sun_longitude": 0,
+      "source": "kasi"
+    },
+    {
+      "name": "청명",
+      "hanja": "淸明",
+      "date": "2000-04-04",
+      "kst": "2000-04-04 20:32",
+      "sun_longitude": 15,
+      "source": "kasi"
+    },
+    {
+      "name": "곡우",
+      "hanja": "穀雨",
+      "date": "2000-04-20",
+      "kst": "2000-04-20 03:40",
+      "sun_longitude": 30,
+      "source": "kasi"
+    },
+    {
+      "name": "입하",
+      "hanja": "立夏",
+      "date": "2000-05-05",
+      "kst": "2000-05-05 13:50",
+      "sun_longitude": 45,
+      "source": "kasi"
+    },
+    {
+      "name": "소만",
+      "hanja": "小滿",
+      "date": "2000-05-21",
+      "kst": "2000-05-21 02:49",
+      "sun_longitude": 60,
+      "source": "kasi"
+    },
+    {
+      "name": "망종",
+      "hanja": "芒種",
+      "date": "2000-06-05",
+      "kst": "2000-06-05 17:59",
+      "sun_longitude": 75,
+      "source": "kasi"
+    },
+    {
+      "name": "하지",
+      "hanja": "夏至",
+      "date": "2000-06-21",
+      "kst": "2000-06-21 10:48",
+      "sun_longitude": 90,
+      "source": "kasi"
+    },
+    {
+      "name": "소서",
+      "hanja": "小暑",
+      "date": "2000-07-07",
+      "kst": "2000-07-07 04:14",
+      "sun_longitude": 105,
+      "source": "kasi"
+    },
+    {
+      "name": "대서",
+      "hanja": "大暑",
+      "date": "2000-07-22",
+      "kst": "2000-07-22 21:43",
+      "sun_longitude": 120,
+      "source": "kasi"
+    },
+    {
+      "name": "입추",
+      "hanja": "立秋",
+      "date": "2000-08-07",
+      "kst": "2000-08-07 14:03",
+      "sun_longitude": 135,
+      "source": "kasi"
+    },
+    {
+      "name": "처서",
+      "hanja": "處暑",
+      "date": "2000-08-23",
+      "kst": "2000-08-23 04:49",
+      "sun_longitude": 150,
+      "source": "kasi"
+    },
+    {
+      "name": "백로",
+      "hanja": "白露",
+      "date": "2000-09-07",
+      "kst": "2000-09-07 16:59",
+      "sun_longitude": 165,
+      "source": "kasi"
+    },
+    {
+      "name": "추분",
+      "hanja": "秋分",
+      "date": "2000-09-23",
+      "kst": "2000-09-23 02:28",
+      "sun_longitude": 180,
+      "source": "kasi"
+    },
+    {
+      "name": "한로",
+      "hanja": "寒露",
+      "date": "2000-10-08",
+      "kst": "2000-10-08 08:38",
+      "sun_longitude": 195,
+      "source": "kasi"
+    },
+    {
+      "name": "상강",
+      "hanja": "霜降",
+      "date": "2000-10-23",
+      "kst": "2000-10-23 11:47",
+      "sun_longitude": 210,
+      "source": "kasi"
+    },
+    {
+      "name": "입동",
+      "hanja": "立冬",
+      "date": "2000-11-07",
+      "kst": "2000-11-07 11:48",
+      "sun_longitude": 225,
+      "source": "kasi"
+    },
+    {
+      "name": "소설",
+      "hanja": "小雪",
+      "date": "2000-11-22",
+      "kst": "2000-11-22 09:19",
+      "sun_longitude": 240,
+      "source": "kasi"
+    },
+    {
+      "name": "대설",
+      "hanja": "大雪",
+      "date": "2000-12-07",
+      "kst": "2000-12-07 04:37",
+      "sun_longitude": 255,
+      "source": "kasi"
+    },
+    {
+      "name": "동지",
+      "hanja": "冬至",
+      "date": "2000-12-21",
+      "kst": "2000-12-21 22:37",
+      "sun_longitude": 270,
+      "source": "kasi"
+    }
+  ],
+  "data_quality_notes": [
+    "2000 입춘/우수 gap repaired in v0.7: true 입춘 2000-02-04 21:40 added; 2000-02-19 17:33 reclassified as 우수."
+  ]
+}

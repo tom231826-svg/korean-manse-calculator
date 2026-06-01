@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0",
+  "name": "korean-manse-calculator-v0.7",
+  "display_name": "Korean Manse Calculator",
+  "version": "0.7.0",
+  "description": "사주/Four Pillars 에이전트용 계산 전용 만세력 스킬. 양력 생년월일시를 국내/서울 기본값 기준으로 정규화하고, 1950~2030 24절기 데이터와 양력 일진 lookup으로 년주·월주·일주·시주를 산출한다. 대한민국 법정시/서머타임 자동 보정과 서울 경도 보정 -32분을 적용한다. 일주는 외부 기준 케이스 검증과 동일하게 입력 양력 일자의 일진을 그대로 사용하며, 자시여도 다음날로 넘기지 않는다.",
+  "author": "korean-manse-calculator contributors",
+  "license": "MIT",
+  "calculation_profile": "seoul_corrected_manse_v0.7",
+  "skill_kind": "python_engine_with_reference_lookup_fallback",
+  "entrypoint": "scripts/calculate_manse.py",
+  "runtime_dependencies": [
+    "python>=3.9"
+  ],
+  "optional_build_dependencies": [
+    "skyfield",
+    "NASA JPL DE421 ephemeris"
+  ],
+  "inputs": {
+    "date": "YYYY-MM-DD solar only",
+    "time": "HH:mm or unknown",
+    "gender": "male|female|unknown",
+    "calendar": "solar only"
+  },
+  "files": {
+    "skill_md": "SKILL.md",
+    "schema": "schemas/manse-output.schema.json",
+    "decision_log": "references/decision-log.md",
+    "agent_studio_description": "prompts/agent-studio-description.txt",
+    "engine": "scripts/calculate_manse.py",
+    "cache_builder": "scripts/build_kasi_cache.py",
+    "cache_validator": "scripts/validate_caches.py",
+    "data_day_ganzhi_pattern": "data/day_ganzhi_by_year/{YYYY}.json",
+    "data_solar_terms": "data/solar_terms_cache.json",
+    "references_ilju_pattern": "references/ilju/{YYYY}.json",
+    "references_jeolgi_pattern": "references/jeolgi/{YYYY}.json",
+    "conversion": "references/conversion.json"
+  },
+  "policies": {
+    "calendar": "solar_only",
+    "birthplace_input": false,
+    "default_birthplace": "Seoul, 126.9780E",
+    "dst": "auto_by_Asia_Seoul_zoneinfo",
+    "standard_time_history": "auto_by_Asia_Seoul_zoneinfo",
+    "longitude_correction_minutes": -32,
+    "longitude_correction_basis": "Seoul local mean time style longitude correction only",
+    "true_solar_time": false,
+    "apparent_solar_time": false,
+    "equation_of_time": false,
+    "overseas_birth": false,
+    "zi_hour_range": "23:00-00:59",
+    "zi_hour_method": "reference-case midnight boundary",
+    "zi_hour_changes_day_pillar": false,
+    "day_pillar_policy": "input_solar_date_preserved",
+    "year_boundary": "ipchun_exact_corrected_time",
+    "month_boundary": "12_solar_term_boundaries_exact_corrected_time"
+  },
+  "data_sources": {
+    "day_ganzhi": {
+      "method": "JDN cycle generated lookup + cached year files",
+      "coverage": "1950-01-01 ~ 2030-12-31 (29,585 days)",
+      "runtime_priority": [
+        "data/day_ganzhi_by_year/{YYYY}.json",
+        "data/day_ganzhi_cache.json",
+        "KASI LrsrCldInfoService optional fallback",
+        "formula fallback"
+      ]
+    },
+    "jeolgi_24": {
+      "coverage": "1950~2030 (81 years, 1,944 entries)",
+      "kasi_direct": {
+        "method": "한국천문연구원 특일정보 API SpcdeInfoService/get24DivisionsInfo",
+        "coverage": "2000~2027"
+      },
+      "skyfield_de421": {
+        "method": "skyfield + NASA JPL DE421 ephemeris, ecliptic_latlon('date')",
+        "coverage": "1950~1999, 2028~2030, plus corrected replacements"
+      },
+      "validation": "KASI ground truth 615개 cross-validation 99.5% (612개) 1분 이내 일치, per reference generation methodology",
+      "runtime_priority": [
+        "data/solar_terms_cache.json",
+        "references/jeolgi/{YYYY}.json",
+        "KASI API if service key exists"
+      ]
+    }
+  },
+  "data_corrections": [
+    "2007-12-07: 대서 라벨 오류 → 대설 by sunLongitude 255°",
+    "2019-01-20: KASI 17:60 → 18:00",
+    "2011-01-21 대한: KASI 1일 typo 의심 → skyfield 2011-01-20 19:18로 교체",
+    "2011-11-08 입동: KASI vs skyfield 6시간 차이 → skyfield 2011-11-08 03:34로 교체",
+    "2015 하지: KASI vs skyfield 20분 차이, KASI 채택 후 review_note 표시",
+    "2000 입춘/우수: v0.7 통합 검증 중 우수 누락/입춘 날짜 오염 발견 → 보정"
+  ],
+  "limitations": [
+    "v0.7은 양력 생년월일만 지원한다.",
+    "음력/윤달 변환은 v1.x backlog다.",
+    "출생지는 입력받지 않고 서울 기준 -32분을 고정 적용한다.",
+    "진태양시/시태양시/균시차는 적용하지 않는다.",
+    "해외 출생은 지원하지 않는다.",
+    "지원 범위는 1950~2030이다."
+  ],
+  "changelog": [
+    {
+      "version": "0.7.0",
+      "date": "2026-05-06",
+      "changes": [
+        "reference generation references/jeolgi 1950~2030 통합",
+        "data/solar_terms_cache.json 1,944 entries full coverage로 교체",
+        "KASI + skyfield_de421 데이터 생성 방법론 문서화",
+        "skyfield ecliptic_latlon('date') 필수 규칙 명시",
+        "KASI 원본 정정 이력 4건 및 2015 하지 review_note 반영",
+        "황경 fallback 규칙을 SKILL.md와 calculation-rules.md에 명시",
+        "외부 기준 케이스 검증 자정경계: 입력 양력 일자의 일진 보존 정책 유지",
+        "T01_reference_A, T02_reference_B, T10_old_skyfield 테스트 추가",
+        "v0.7 통합 검증 중 발견한 2000 입춘/우수 reference 결함 보정"
+      ]
+    },
+    {
+      "version": "0.6.1",
+      "date": "2026-05-06",
+      "changes": [
+        "Python 계산 엔진, 서울 -32분 보정, 입력일 일진 보존 정책"
+      ]
+    }
+  ]
+}

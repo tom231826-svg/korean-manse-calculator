@@ -1,0 +1,15 @@
+[
+  {"id":"T01_reference_A","date":"1990-01-01","time":"23:30","gender":"unknown","purpose":"외부 기준 케이스 검증 A: 입력일 일주 유지, 보정 후 亥시"},
+  {"id":"T02_reference_B","date":"1990-01-02","time":"00:30","gender":"unknown","purpose":"외부 기준 케이스 검증 B: 보정 후 전날 子시이나 입력일 일주 유지"},
+  {"id":"T03_junseok","date":"2001-11-19","time":"12:00","gender":"unknown","purpose":"정상 한낮 케이스"},
+  {"id":"T04_skyfield","date":"1995-05-15","time":"14:30","gender":"unknown","purpose":"skyfield 보완 절기 영역"},
+  {"id":"T05_ipchun_before","date":"2024-02-04","time":"16:00","gender":"unknown","purpose":"서울 -32분 보정 후 입춘 직전"},
+  {"id":"T06_ipchun_after","date":"2024-02-04","time":"18:00","gender":"unknown","purpose":"서울 -32분 보정 후 입춘 직후"},
+  {"id":"T07_year_boundary","date":"2010-01-01","time":"06:00","gender":"unknown","purpose":"입춘 전, 전년도 년주"},
+  {"id":"T08_jeolgi","date":"2020-08-07","time":"10:00","gender":"unknown","purpose":"입추 전후 월주 경계 검증"},
+  {"id":"T09_time_unknown","date":"2015-08-15","time":"unknown","gender":"female","purpose":"시간 미상: 시주 null, 00:00 가정 금지"},
+  {"id":"T10_old_skyfield","date":"1965-07-07","time":"16:00","gender":"unknown","purpose":"1965년 skyfield 영역 검증"},
+  {"id":"T11_lunar_rejected","date":"2001-09-30","time":"12:00","gender":"male","calendar":"lunar","purpose":"음력 입력 거절"},
+  {"id":"T12_year_out_of_range_low","date":"1949-12-01","time":"10:00","gender":"unknown","purpose":"지원범위 하한 밖"},
+  {"id":"T13_year_out_of_range_high","date":"2031-01-01","time":"10:00","gender":"unknown","purpose":"지원범위 상한 밖"}
+]

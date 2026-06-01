@@ -1,0 +1,2551 @@
+{
+  "siju_table": {
+    "siji_by_hour": [
+      {
+        "hour_start": "23:00",
+        "hour_end": "01:00",
+        "ji_kor": "자",
+        "ji_han": "子",
+        "next_day_for_ilju": false,
+        "note": "子시는 23:00~00:59이나, v0.7 정책상 일주는 입력 양력 일자의 일진을 그대로 사용한다. 외부 기준 케이스 검증과 동일하게 자시여도 다음날로 넘기지 않는다."
+      },
+      {
+        "hour_start": "01:00",
+        "hour_end": "03:00",
+        "ji_kor": "축",
+        "ji_han": "丑",
+        "next_day_for_ilju": false
+      },
+      {
+        "hour_start": "03:00",
+        "hour_end": "05:00",
+        "ji_kor": "인",
+        "ji_han": "寅",
+        "next_day_for_ilju": false
+      },
+      {
+        "hour_start": "05:00",
+        "hour_end": "07:00",
+        "ji_kor": "묘",
+        "ji_han": "卯",
+        "next_day_for_ilju": false
+      },
+      {
+        "hour_start": "07:00",
+        "hour_end": "09:00",
+        "ji_kor": "진",
+        "ji_han": "辰",
+        "next_day_for_ilju": false
+      },
+      {
+        "hour_start": "09:00",
+        "hour_end": "11:00",
+        "ji_kor": "사",
+        "ji_han": "巳",
+        "next_day_for_ilju": false
+      },
+      {
+        "hour_start": "11:00",
+        "hour_end": "13:00",
+        "ji_kor": "오",
+        "ji_han": "午",
+        "next_day_for_ilju": false
+      },
+      {
+        "hour_start": "13:00",
+        "hour_end": "15:00",
+        "ji_kor": "미",
+        "ji_han": "未",
+        "next_day_for_ilju": false
+      },
+      {
+        "hour_start": "15:00",
+        "hour_end": "17:00",
+        "ji_kor": "신",
+        "ji_han": "申",
+        "next_day_for_ilju": false
+      },
+      {
+        "hour_start": "17:00",
+        "hour_end": "19:00",
+        "ji_kor": "유",
+        "ji_han": "酉",
+        "next_day_for_ilju": false
+      },
+      {
+        "hour_start": "19:00",
+        "hour_end": "21:00",
+        "ji_kor": "술",
+        "ji_han": "戌",
+        "next_day_for_ilju": false
+      },
+      {
+        "hour_start": "21:00",
+        "hour_end": "23:00",
+        "ji_kor": "해",
+        "ji_han": "亥",
+        "next_day_for_ilju": false
+      }
+    ],
+    "siju_by_il_gan": {
+      "갑": [
+        {
+          "si_ji_kor": "자",
+          "si_ji_han": "子",
+          "si_gan_kor": "갑",
+          "si_gan_han": "甲",
+          "siju_kor": "갑자",
+          "siju_han": "甲子"
+        },
+        {
+          "si_ji_kor": "축",
+          "si_ji_han": "丑",
+          "si_gan_kor": "을",
+          "si_gan_han": "乙",
+          "siju_kor": "을축",
+          "siju_han": "乙丑"
+        },
+        {
+          "si_ji_kor": "인",
+          "si_ji_han": "寅",
+          "si_gan_kor": "병",
+          "si_gan_han": "丙",
+          "siju_kor": "병인",
+          "siju_han": "丙寅"
+        },
+        {
+          "si_ji_kor": "묘",
+          "si_ji_han": "卯",
+          "si_gan_kor": "정",
+          "si_gan_han": "丁",
+          "siju_kor": "정묘",
+          "siju_han": "丁卯"
+        },
+        {
+          "si_ji_kor": "진",
+          "si_ji_han": "辰",
+          "si_gan_kor": "무",
+          "si_gan_han": "戊",
+          "siju_kor": "무진",
+          "siju_han": "戊辰"
+        },
+        {
+          "si_ji_kor": "사",
+          "si_ji_han": "巳",
+          "si_gan_kor": "기",
+          "si_gan_han": "己",
+          "siju_kor": "기사",
+          "siju_han": "己巳"
+        },
+        {
+          "si_ji_kor": "오",
+          "si_ji_han": "午",
+          "si_gan_kor": "경",
+          "si_gan_han": "庚",
+          "siju_kor": "경오",
+          "siju_han": "庚午"
+        },
+        {
+          "si_ji_kor": "미",
+          "si_ji_han": "未",
+          "si_gan_kor": "신",
+          "si_gan_han": "辛",
+          "siju_kor": "신미",
+          "siju_han": "辛未"
+        },
+        {
+          "si_ji_kor": "신",
+          "si_ji_han": "申",
+          "si_gan_kor": "임",
+          "si_gan_han": "壬",
+          "siju_kor": "임신",
+          "siju_han": "壬申"
+        },
+        {
+          "si_ji_kor": "유",
+          "si_ji_han": "酉",
+          "si_gan_kor": "계",
+          "si_gan_han": "癸",
+          "siju_kor": "계유",
+          "siju_han": "癸酉"
+        },
+        {
+          "si_ji_kor": "술",
+          "si_ji_han": "戌",
+          "si_gan_kor": "갑",
+          "si_gan_han": "甲",
+          "siju_kor": "갑술",
+          "siju_han": "甲戌"
+        },
+        {
+          "si_ji_kor": "해",
+          "si_ji_han": "亥",
+          "si_gan_kor": "을",
+          "si_gan_han": "乙",
+          "siju_kor": "을해",
+          "siju_han": "乙亥"
+        }
+      ],
+      "을": [
+        {
+          "si_ji_kor": "자",
+          "si_ji_han": "子",
+          "si_gan_kor": "병",
+          "si_gan_han": "丙",
+          "siju_kor": "병자",
+          "siju_han": "丙子"
+        },
+        {
+          "si_ji_kor": "축",
+          "si_ji_han": "丑",
+          "si_gan_kor": "정",
+          "si_gan_han": "丁",
+          "siju_kor": "정축",
+          "siju_han": "丁丑"
+        },
+        {
+          "si_ji_kor": "인",
+          "si_ji_han": "寅",
+          "si_gan_kor": "무",
+          "si_gan_han": "戊",
+          "siju_kor": "무인",
+          "siju_han": "戊寅"
+        },
+        {
+          "si_ji_kor": "묘",
+          "si_ji_han": "卯",
+          "si_gan_kor": "기",
+          "si_gan_han": "己",
+          "siju_kor": "기묘",
+          "siju_han": "己卯"
+        },
+        {
+          "si_ji_kor": "진",
+          "si_ji_han": "辰",
+          "si_gan_kor": "경",
+          "si_gan_han": "庚",
+          "siju_kor": "경진",
+          "siju_han": "庚辰"
+        },
+        {
+          "si_ji_kor": "사",
+          "si_ji_han": "巳",
+          "si_gan_kor": "신",
+          "si_gan_han": "辛",
+          "siju_kor": "신사",
+          "siju_han": "辛巳"
+        },
+        {
+          "si_ji_kor": "오",
+          "si_ji_han": "午",
+          "si_gan_kor": "임",
+          "si_gan_han": "壬",
+          "siju_kor": "임오",
+          "siju_han": "壬午"
+        },
+        {
+          "si_ji_kor": "미",
+          "si_ji_han": "未",
+          "si_gan_kor": "계",
+          "si_gan_han": "癸",
+          "siju_kor": "계미",
+          "siju_han": "癸未"
+        },
+        {
+          "si_ji_kor": "신",
+          "si_ji_han": "申",
+          "si_gan_kor": "갑",
+          "si_gan_han": "甲",
+          "siju_kor": "갑신",
+          "siju_han": "甲申"
+        },
+        {
+          "si_ji_kor": "유",
+          "si_ji_han": "酉",
+          "si_gan_kor": "을",
+          "si_gan_han": "乙",
+          "siju_kor": "을유",
+          "siju_han": "乙酉"
+        },
+        {
+          "si_ji_kor": "술",
+          "si_ji_han": "戌",
+          "si_gan_kor": "병",
+          "si_gan_han": "丙",
+          "siju_kor": "병술",
+          "siju_han": "丙戌"
+        },
+        {
+          "si_ji_kor": "해",
+          "si_ji_han": "亥",
+          "si_gan_kor": "정",
+          "si_gan_han": "丁",
+          "siju_kor": "정해",
+          "siju_han": "丁亥"
+        }
+      ],
+      "병": [
+        {
+          "si_ji_kor": "자",
+          "si_ji_han": "子",
+          "si_gan_kor": "무",
+          "si_gan_han": "戊",
+          "siju_kor": "무자",
+          "siju_han": "戊子"
+        },
+        {
+          "si_ji_kor": "축",
+          "si_ji_han": "丑",
+          "si_gan_kor": "기",
+          "si_gan_han": "己",
+          "siju_kor": "기축",
+          "siju_han": "己丑"
+        },
+        {
+          "si_ji_kor": "인",
+          "si_ji_han": "寅",
+          "si_gan_kor": "경",
+          "si_gan_han": "庚",
+          "siju_kor": "경인",
+          "siju_han": "庚寅"
+        },
+        {
+          "si_ji_kor": "묘",
+          "si_ji_han": "卯",
+          "si_gan_kor": "신",
+          "si_gan_han": "辛",
+          "siju_kor": "신묘",
+          "siju_han": "辛卯"
+        },
+        {
+          "si_ji_kor": "진",
+          "si_ji_han": "辰",
+          "si_gan_kor": "임",
+          "si_gan_han": "壬",
+          "siju_kor": "임진",
+          "siju_han": "壬辰"
+        },
+        {
+          "si_ji_kor": "사",
+          "si_ji_han": "巳",
+          "si_gan_kor": "계",
+          "si_gan_han": "癸",
+          "siju_kor": "계사",
+          "siju_han": "癸巳"
+        },
+        {
+          "si_ji_kor": "오",
+          "si_ji_han": "午",
+          "si_gan_kor": "갑",
+          "si_gan_han": "甲",
+          "siju_kor": "갑오",
+          "siju_han": "甲午"
+        },
+        {
+          "si_ji_kor": "미",
+          "si_ji_han": "未",
+          "si_gan_kor": "을",
+          "si_gan_han": "乙",
+          "siju_kor": "을미",
+          "siju_han": "乙未"
+        },
+        {
+          "si_ji_kor": "신",
+          "si_ji_han": "申",
+          "si_gan_kor": "병",
+          "si_gan_han": "丙",
+          "siju_kor": "병신",
+          "siju_han": "丙申"
+        },
+        {
+          "si_ji_kor": "유",
+          "si_ji_han": "酉",
+          "si_gan_kor": "정",
+          "si_gan_han": "丁",
+          "siju_kor": "정유",
+          "siju_han": "丁酉"
+        },
+        {
+          "si_ji_kor": "술",
+          "si_ji_han": "戌",
+          "si_gan_kor": "무",
+          "si_gan_han": "戊",
+          "siju_kor": "무술",
+          "siju_han": "戊戌"
+        },
+        {
+          "si_ji_kor": "해",
+          "si_ji_han": "亥",
+          "si_gan_kor": "기",
+          "si_gan_han": "己",
+          "siju_kor": "기해",
+          "siju_han": "己亥"
+        }
+      ],
+      "정": [
+        {
+          "si_ji_kor": "자",
+          "si_ji_han": "子",
+          "si_gan_kor": "경",
+          "si_gan_han": "庚",
+          "siju_kor": "경자",
+          "siju_han": "庚子"
+        },
+        {
+          "si_ji_kor": "축",
+          "si_ji_han": "丑",
+          "si_gan_kor": "신",
+          "si_gan_han": "辛",
+          "siju_kor": "신축",
+          "siju_han": "辛丑"
+        },
+        {
+          "si_ji_kor": "인",
+          "si_ji_han": "寅",
+          "si_gan_kor": "임",
+          "si_gan_han": "壬",
+          "siju_kor": "임인",
+          "siju_han": "壬寅"
+        },
+        {
+          "si_ji_kor": "묘",
+          "si_ji_han": "卯",
+          "si_gan_kor": "계",
+          "si_gan_han": "癸",
+          "siju_kor": "계묘",
+          "siju_han": "癸卯"
+        },
+        {
+          "si_ji_kor": "진",
+          "si_ji_han": "辰",
+          "si_gan_kor": "갑",
+          "si_gan_han": "甲",
+          "siju_kor": "갑진",
+          "siju_han": "甲辰"
+        },
+        {
+          "si_ji_kor": "사",
+          "si_ji_han": "巳",
+          "si_gan_kor": "을",
+          "si_gan_han": "乙",
+          "siju_kor": "을사",
+          "siju_han": "乙巳"
+        },
+        {
+          "si_ji_kor": "오",
+          "si_ji_han": "午",
+          "si_gan_kor": "병",
+          "si_gan_han": "丙",
+          "siju_kor": "병오",
+          "siju_han": "丙午"
+        },
+        {
+          "si_ji_kor": "미",
+          "si_ji_han": "未",
+          "si_gan_kor": "정",
+          "si_gan_han": "丁",
+          "siju_kor": "정미",
+          "siju_han": "丁未"
+        },
+        {
+          "si_ji_kor": "신",
+          "si_ji_han": "申",
+          "si_gan_kor": "무",
+          "si_gan_han": "戊",
+          "siju_kor": "무신",
+          "siju_han": "戊申"
+        },
+        {
+          "si_ji_kor": "유",
+          "si_ji_han": "酉",
+          "si_gan_kor": "기",
+          "si_gan_han": "己",
+          "siju_kor": "기유",
+          "siju_han": "己酉"
+        },
+        {
+          "si_ji_kor": "술",
+          "si_ji_han": "戌",
+          "si_gan_kor": "경",
+          "si_gan_han": "庚",
+          "siju_kor": "경술",
+          "siju_han": "庚戌"
+        },
+        {
+          "si_ji_kor": "해",
+          "si_ji_han": "亥",
+          "si_gan_kor": "신",
+          "si_gan_han": "辛",
+          "siju_kor": "신해",
+          "siju_han": "辛亥"
+        }
+      ],
+      "무": [
+        {
+          "si_ji_kor": "자",
+          "si_ji_han": "子",
+          "si_gan_kor": "임",
+          "si_gan_han": "壬",
+          "siju_kor": "임자",
+          "siju_han": "壬子"
+        },
+        {
+          "si_ji_kor": "축",
+          "si_ji_han": "丑",
+          "si_gan_kor": "계",
+          "si_gan_han": "癸",
+          "siju_kor": "계축",
+          "siju_han": "癸丑"
+        },
+        {
+          "si_ji_kor": "인",
+          "si_ji_han": "寅",
+          "si_gan_kor": "갑",
+          "si_gan_han": "甲",
+          "siju_kor": "갑인",
+          "siju_han": "甲寅"
+        },
+        {
+          "si_ji_kor": "묘",
+          "si_ji_han": "卯",
+          "si_gan_kor": "을",
+          "si_gan_han": "乙",
+          "siju_kor": "을묘",
+          "siju_han": "乙卯"
+        },
+        {
+          "si_ji_kor": "진",
+          "si_ji_han": "辰",
+          "si_gan_kor": "병",
+          "si_gan_han": "丙",
+          "siju_kor": "병진",
+          "siju_han": "丙辰"
+        },
+        {
+          "si_ji_kor": "사",
+          "si_ji_han": "巳",
+          "si_gan_kor": "정",
+          "si_gan_han": "丁",
+          "siju_kor": "정사",
+          "siju_han": "丁巳"
+        },
+        {
+          "si_ji_kor": "오",
+          "si_ji_han": "午",
+          "si_gan_kor": "무",
+          "si_gan_han": "戊",
+          "siju_kor": "무오",
+          "siju_han": "戊午"
+        },
+        {
+          "si_ji_kor": "미",
+          "si_ji_han": "未",
+          "si_gan_kor": "기",
+          "si_gan_han": "己",
+          "siju_kor": "기미",
+          "siju_han": "己未"
+        },
+        {
+          "si_ji_kor": "신",
+          "si_ji_han": "申",
+          "si_gan_kor": "경",
+          "si_gan_han": "庚",
+          "siju_kor": "경신",
+          "siju_han": "庚申"
+        },
+        {
+          "si_ji_kor": "유",
+          "si_ji_han": "酉",
+          "si_gan_kor": "신",
+          "si_gan_han": "辛",
+          "siju_kor": "신유",
+          "siju_han": "辛酉"
+        },
+        {
+          "si_ji_kor": "술",
+          "si_ji_han": "戌",
+          "si_gan_kor": "임",
+          "si_gan_han": "壬",
+          "siju_kor": "임술",
+          "siju_han": "壬戌"
+        },
+        {
+          "si_ji_kor": "해",
+          "si_ji_han": "亥",
+          "si_gan_kor": "계",
+          "si_gan_han": "癸",
+          "siju_kor": "계해",
+          "siju_han": "癸亥"
+        }
+      ],
+      "기": [
+        {
+          "si_ji_kor": "자",
+          "si_ji_han": "子",
+          "si_gan_kor": "갑",
+          "si_gan_han": "甲",
+          "siju_kor": "갑자",
+          "siju_han": "甲子"
+        },
+        {
+          "si_ji_kor": "축",
+          "si_ji_han": "丑",
+          "si_gan_kor": "을",
+          "si_gan_han": "乙",
+          "siju_kor": "을축",
+          "siju_han": "乙丑"
+        },
+        {
+          "si_ji_kor": "인",
+          "si_ji_han": "寅",
+          "si_gan_kor": "병",
+          "si_gan_han": "丙",
+          "siju_kor": "병인",
+          "siju_han": "丙寅"
+        },
+        {
+          "si_ji_kor": "묘",
+          "si_ji_han": "卯",
+          "si_gan_kor": "정",
+          "si_gan_han": "丁",
+          "siju_kor": "정묘",
+          "siju_han": "丁卯"
+        },
+        {
+          "si_ji_kor": "진",
+          "si_ji_han": "辰",
+          "si_gan_kor": "무",
+          "si_gan_han": "戊",
+          "siju_kor": "무진",
+          "siju_han": "戊辰"
+        },
+        {
+          "si_ji_kor": "사",
+          "si_ji_han": "巳",
+          "si_gan_kor": "기",
+          "si_gan_han": "己",
+          "siju_kor": "기사",
+          "siju_han": "己巳"
+        },
+        {
+          "si_ji_kor": "오",
+          "si_ji_han": "午",
+          "si_gan_kor": "경",
+          "si_gan_han": "庚",
+          "siju_kor": "경오",
+          "siju_han": "庚午"
+        },
+        {
+          "si_ji_kor": "미",
+          "si_ji_han": "未",
+          "si_gan_kor": "신",
+          "si_gan_han": "辛",
+          "siju_kor": "신미",
+          "siju_han": "辛未"
+        },
+        {
+          "si_ji_kor": "신",
+          "si_ji_han": "申",
+          "si_gan_kor": "임",
+          "si_gan_han": "壬",
+          "siju_kor": "임신",
+          "siju_han": "壬申"
+        },
+        {
+          "si_ji_kor": "유",
+          "si_ji_han": "酉",
+          "si_gan_kor": "계",
+          "si_gan_han": "癸",
+          "siju_kor": "계유",
+          "siju_han": "癸酉"
+        },
+        {
+          "si_ji_kor": "술",
+          "si_ji_han": "戌",
+          "si_gan_kor": "갑",
+          "si_gan_han": "甲",
+          "siju_kor": "갑술",
+          "siju_han": "甲戌"
+        },
+        {
+          "si_ji_kor": "해",
+          "si_ji_han": "亥",
+          "si_gan_kor": "을",
+          "si_gan_han": "乙",
+          "siju_kor": "을해",
+          "siju_han": "乙亥"
+        }
+      ],
+      "경": [
+        {
+          "si_ji_kor": "자",
+          "si_ji_han": "子",
+          "si_gan_kor": "병",
+          "si_gan_han": "丙",
+          "siju_kor": "병자",
+          "siju_han": "丙子"
+        },
+        {
+          "si_ji_kor": "축",
+          "si_ji_han": "丑",
+          "si_gan_kor": "정",
+          "si_gan_han": "丁",
+          "siju_kor": "정축",
+          "siju_han": "丁丑"
+        },
+        {
+          "si_ji_kor": "인",
+          "si_ji_han": "寅",
+          "si_gan_kor": "무",
+          "si_gan_han": "戊",
+          "siju_kor": "무인",
+          "siju_han": "戊寅"
+        },
+        {
+          "si_ji_kor": "묘",
+          "si_ji_han": "卯",
+          "si_gan_kor": "기",
+          "si_gan_han": "己",
+          "siju_kor": "기묘",
+          "siju_han": "己卯"
+        },
+        {
+          "si_ji_kor": "진",
+          "si_ji_han": "辰",
+          "si_gan_kor": "경",
+          "si_gan_han": "庚",
+          "siju_kor": "경진",
+          "siju_han": "庚辰"
+        },
+        {
+          "si_ji_kor": "사",
+          "si_ji_han": "巳",
+          "si_gan_kor": "신",
+          "si_gan_han": "辛",
+          "siju_kor": "신사",
+          "siju_han": "辛巳"
+        },
+        {
+          "si_ji_kor": "오",
+          "si_ji_han": "午",
+          "si_gan_kor": "임",
+          "si_gan_han": "壬",
+          "siju_kor": "임오",
+          "siju_han": "壬午"
+        },
+        {
+          "si_ji_kor": "미",
+          "si_ji_han": "未",
+          "si_gan_kor": "계",
+          "si_gan_han": "癸",
+          "siju_kor": "계미",
+          "siju_han": "癸未"
+        },
+        {
+          "si_ji_kor": "신",
+          "si_ji_han": "申",
+          "si_gan_kor": "갑",
+          "si_gan_han": "甲",
+          "siju_kor": "갑신",
+          "siju_han": "甲申"
+        },
+        {
+          "si_ji_kor": "유",
+          "si_ji_han": "酉",
+          "si_gan_kor": "을",
+          "si_gan_han": "乙",
+          "siju_kor": "을유",
+          "siju_han": "乙酉"
+        },
+        {
+          "si_ji_kor": "술",
+          "si_ji_han": "戌",
+          "si_gan_kor": "병",
+          "si_gan_han": "丙",
+          "siju_kor": "병술",
+          "siju_han": "丙戌"
+        },
+        {
+          "si_ji_kor": "해",
+          "si_ji_han": "亥",
+          "si_gan_kor": "정",
+          "si_gan_han": "丁",
+          "siju_kor": "정해",
+          "siju_han": "丁亥"
+        }
+      ],
+      "신": [
+        {
+          "si_ji_kor": "자",
+          "si_ji_han": "子",
+          "si_gan_kor": "무",
+          "si_gan_han": "戊",
+          "siju_kor": "무자",
+          "siju_han": "戊子"
+        },
+        {
+          "si_ji_kor": "축",
+          "si_ji_han": "丑",
+          "si_gan_kor": "기",
+          "si_gan_han": "己",
+          "siju_kor": "기축",
+          "siju_han": "己丑"
+        },
+        {
+          "si_ji_kor": "인",
+          "si_ji_han": "寅",
+          "si_gan_kor": "경",
+          "si_gan_han": "庚",
+          "siju_kor": "경인",
+          "siju_han": "庚寅"
+        },
+        {
+          "si_ji_kor": "묘",
+          "si_ji_han": "卯",
+          "si_gan_kor": "신",
+          "si_gan_han": "辛",
+          "siju_kor": "신묘",
+          "siju_han": "辛卯"
+        },
+        {
+          "si_ji_kor": "진",
+          "si_ji_han": "辰",
+          "si_gan_kor": "임",
+          "si_gan_han": "壬",
+          "siju_kor": "임진",
+          "siju_han": "壬辰"
+        },
+        {
+          "si_ji_kor": "사",
+          "si_ji_han": "巳",
+          "si_gan_kor": "계",
+          "si_gan_han": "癸",
+          "siju_kor": "계사",
+          "siju_han": "癸巳"
+        },
+        {
+          "si_ji_kor": "오",
+          "si_ji_han": "午",
+          "si_gan_kor": "갑",
+          "si_gan_han": "甲",
+          "siju_kor": "갑오",
+          "siju_han": "甲午"
+        },
+        {
+          "si_ji_kor": "미",
+          "si_ji_han": "未",
+          "si_gan_kor": "을",
+          "si_gan_han": "乙",
+          "siju_kor": "을미",
+          "siju_han": "乙未"
+        },
+        {
+          "si_ji_kor": "신",
+          "si_ji_han": "申",
+          "si_gan_kor": "병",
+          "si_gan_han": "丙",
+          "siju_kor": "병신",
+          "siju_han": "丙申"
+        },
+        {
+          "si_ji_kor": "유",
+          "si_ji_han": "酉",
+          "si_gan_kor": "정",
+          "si_gan_han": "丁",
+          "siju_kor": "정유",
+          "siju_han": "丁酉"
+        },
+        {
+          "si_ji_kor": "술",
+          "si_ji_han": "戌",
+          "si_gan_kor": "무",
+          "si_gan_han": "戊",
+          "siju_kor": "무술",
+          "siju_han": "戊戌"
+        },
+        {
+          "si_ji_kor": "해",
+          "si_ji_han": "亥",
+          "si_gan_kor": "기",
+          "si_gan_han": "己",
+          "siju_kor": "기해",
+          "siju_han": "己亥"
+        }
+      ],
+      "임": [
+        {
+          "si_ji_kor": "자",
+          "si_ji_han": "子",
+          "si_gan_kor": "경",
+          "si_gan_han": "庚",
+          "siju_kor": "경자",
+          "siju_han": "庚子"
+        },
+        {
+          "si_ji_kor": "축",
+          "si_ji_han": "丑",
+          "si_gan_kor": "신",
+          "si_gan_han": "辛",
+          "siju_kor": "신축",
+          "siju_han": "辛丑"
+        },
+        {
+          "si_ji_kor": "인",
+          "si_ji_han": "寅",
+          "si_gan_kor": "임",
+          "si_gan_han": "壬",
+          "siju_kor": "임인",
+          "siju_han": "壬寅"
+        },
+        {
+          "si_ji_kor": "묘",
+          "si_ji_han": "卯",
+          "si_gan_kor": "계",
+          "si_gan_han": "癸",
+          "siju_kor": "계묘",
+          "siju_han": "癸卯"
+        },
+        {
+          "si_ji_kor": "진",
+          "si_ji_han": "辰",
+          "si_gan_kor": "갑",
+          "si_gan_han": "甲",
+          "siju_kor": "갑진",
+          "siju_han": "甲辰"
+        },
+        {
+          "si_ji_kor": "사",
+          "si_ji_han": "巳",
+          "si_gan_kor": "을",
+          "si_gan_han": "乙",
+          "siju_kor": "을사",
+          "siju_han": "乙巳"
+        },
+        {
+          "si_ji_kor": "오",
+          "si_ji_han": "午",
+          "si_gan_kor": "병",
+          "si_gan_han": "丙",
+          "siju_kor": "병오",
+          "siju_han": "丙午"
+        },
+        {
+          "si_ji_kor": "미",
+          "si_ji_han": "未",
+          "si_gan_kor": "정",
+          "si_gan_han": "丁",
+          "siju_kor": "정미",
+          "siju_han": "丁未"
+        },
+        {
+          "si_ji_kor": "신",
+          "si_ji_han": "申",
+          "si_gan_kor": "무",
+          "si_gan_han": "戊",
+          "siju_kor": "무신",
+          "siju_han": "戊申"
+        },
+        {
+          "si_ji_kor": "유",
+          "si_ji_han": "酉",
+          "si_gan_kor": "기",
+          "si_gan_han": "己",
+          "siju_kor": "기유",
+          "siju_han": "己酉"
+        },
+        {
+          "si_ji_kor": "술",
+          "si_ji_han": "戌",
+          "si_gan_kor": "경",
+          "si_gan_han": "庚",
+          "siju_kor": "경술",
+          "siju_han": "庚戌"
+        },
+        {
+          "si_ji_kor": "해",
+          "si_ji_han": "亥",
+          "si_gan_kor": "신",
+          "si_gan_han": "辛",
+          "siju_kor": "신해",
+          "siju_han": "辛亥"
+        }
+      ],
+      "계": [
+        {
+          "si_ji_kor": "자",
+          "si_ji_han": "子",
+          "si_gan_kor": "임",
+          "si_gan_han": "壬",
+          "siju_kor": "임자",
+          "siju_han": "壬子"
+        },
+        {
+          "si_ji_kor": "축",
+          "si_ji_han": "丑",
+          "si_gan_kor": "계",
+          "si_gan_han": "癸",
+          "siju_kor": "계축",
+          "siju_han": "癸丑"
+        },
+        {
+          "si_ji_kor": "인",
+          "si_ji_han": "寅",
+          "si_gan_kor": "갑",
+          "si_gan_han": "甲",
+          "siju_kor": "갑인",
+          "siju_han": "甲寅"
+        },
+        {
+          "si_ji_kor": "묘",
+          "si_ji_han": "卯",
+          "si_gan_kor": "을",
+          "si_gan_han": "乙",
+          "siju_kor": "을묘",
+          "siju_han": "乙卯"
+        },
+        {
+          "si_ji_kor": "진",
+          "si_ji_han": "辰",
+          "si_gan_kor": "병",
+          "si_gan_han": "丙",
+          "siju_kor": "병진",
+          "siju_han": "丙辰"
+        },
+        {
+          "si_ji_kor": "사",
+          "si_ji_han": "巳",
+          "si_gan_kor": "정",
+          "si_gan_han": "丁",
+          "siju_kor": "정사",
+          "siju_han": "丁巳"
+        },
+        {
+          "si_ji_kor": "오",
+          "si_ji_han": "午",
+          "si_gan_kor": "무",
+          "si_gan_han": "戊",
+          "siju_kor": "무오",
+          "siju_han": "戊午"
+        },
+        {
+          "si_ji_kor": "미",
+          "si_ji_han": "未",
+          "si_gan_kor": "기",
+          "si_gan_han": "己",
+          "siju_kor": "기미",
+          "siju_han": "己未"
+        },
+        {
+          "si_ji_kor": "신",
+          "si_ji_han": "申",
+          "si_gan_kor": "경",
+          "si_gan_han": "庚",
+          "siju_kor": "경신",
+          "siju_han": "庚申"
+        },
+        {
+          "si_ji_kor": "유",
+          "si_ji_han": "酉",
+          "si_gan_kor": "신",
+          "si_gan_han": "辛",
+          "siju_kor": "신유",
+          "siju_han": "辛酉"
+        },
+        {
+          "si_ji_kor": "술",
+          "si_ji_han": "戌",
+          "si_gan_kor": "임",
+          "si_gan_han": "壬",
+          "siju_kor": "임술",
+          "siju_han": "壬戌"
+        },
+        {
+          "si_ji_kor": "해",
+          "si_ji_han": "亥",
+          "si_gan_kor": "계",
+          "si_gan_han": "癸",
+          "siju_kor": "계해",
+          "siju_han": "癸亥"
+        }
+      ]
+    },
+    "ojadun_rule": {
+      "갑": "갑",
+      "기": "갑",
+      "을": "병",
+      "경": "병",
+      "병": "무",
+      "신": "무",
+      "정": "경",
+      "임": "경",
+      "무": "임",
+      "계": "임"
+    }
+  },
+  "wolju_table": {
+    "jeolgi_to_wolji": [
+      {
+        "jeolgi": "입춘",
+        "wol_ji_kor": "인",
+        "wol_ji_han": "寅"
+      },
+      {
+        "jeolgi": "경칩",
+        "wol_ji_kor": "묘",
+        "wol_ji_han": "卯"
+      },
+      {
+        "jeolgi": "청명",
+        "wol_ji_kor": "진",
+        "wol_ji_han": "辰"
+      },
+      {
+        "jeolgi": "입하",
+        "wol_ji_kor": "사",
+        "wol_ji_han": "巳"
+      },
+      {
+        "jeolgi": "망종",
+        "wol_ji_kor": "오",
+        "wol_ji_han": "午"
+      },
+      {
+        "jeolgi": "소서",
+        "wol_ji_kor": "미",
+        "wol_ji_han": "未"
+      },
+      {
+        "jeolgi": "입추",
+        "wol_ji_kor": "신",
+        "wol_ji_han": "申"
+      },
+      {
+        "jeolgi": "백로",
+        "wol_ji_kor": "유",
+        "wol_ji_han": "酉"
+      },
+      {
+        "jeolgi": "한로",
+        "wol_ji_kor": "술",
+        "wol_ji_han": "戌"
+      },
+      {
+        "jeolgi": "입동",
+        "wol_ji_kor": "해",
+        "wol_ji_han": "亥"
+      },
+      {
+        "jeolgi": "대설",
+        "wol_ji_kor": "자",
+        "wol_ji_han": "子"
+      },
+      {
+        "jeolgi": "소한",
+        "wol_ji_kor": "축",
+        "wol_ji_han": "丑"
+      }
+    ],
+    "wolju_by_nyeon_gan": {
+      "갑": [
+        {
+          "jeolgi": "입춘",
+          "wol_ji_kor": "인",
+          "wol_ji_han": "寅",
+          "wol_gan_kor": "병",
+          "wol_gan_han": "丙",
+          "wolju_kor": "병인",
+          "wolju_han": "丙寅"
+        },
+        {
+          "jeolgi": "경칩",
+          "wol_ji_kor": "묘",
+          "wol_ji_han": "卯",
+          "wol_gan_kor": "정",
+          "wol_gan_han": "丁",
+          "wolju_kor": "정묘",
+          "wolju_han": "丁卯"
+        },
+        {
+          "jeolgi": "청명",
+          "wol_ji_kor": "진",
+          "wol_ji_han": "辰",
+          "wol_gan_kor": "무",
+          "wol_gan_han": "戊",
+          "wolju_kor": "무진",
+          "wolju_han": "戊辰"
+        },
+        {
+          "jeolgi": "입하",
+          "wol_ji_kor": "사",
+          "wol_ji_han": "巳",
+          "wol_gan_kor": "기",
+          "wol_gan_han": "己",
+          "wolju_kor": "기사",
+          "wolju_han": "己巳"
+        },
+        {
+          "jeolgi": "망종",
+          "wol_ji_kor": "오",
+          "wol_ji_han": "午",
+          "wol_gan_kor": "경",
+          "wol_gan_han": "庚",
+          "wolju_kor": "경오",
+          "wolju_han": "庚午"
+        },
+        {
+          "jeolgi": "소서",
+          "wol_ji_kor": "미",
+          "wol_ji_han": "未",
+          "wol_gan_kor": "신",
+          "wol_gan_han": "辛",
+          "wolju_kor": "신미",
+          "wolju_han": "辛未"
+        },
+        {
+          "jeolgi": "입추",
+          "wol_ji_kor": "신",
+          "wol_ji_han": "申",
+          "wol_gan_kor": "임",
+          "wol_gan_han": "壬",
+          "wolju_kor": "임신",
+          "wolju_han": "壬申"
+        },
+        {
+          "jeolgi": "백로",
+          "wol_ji_kor": "유",
+          "wol_ji_han": "酉",
+          "wol_gan_kor": "계",
+          "wol_gan_han": "癸",
+          "wolju_kor": "계유",
+          "wolju_han": "癸酉"
+        },
+        {
+          "jeolgi": "한로",
+          "wol_ji_kor": "술",
+          "wol_ji_han": "戌",
+          "wol_gan_kor": "갑",
+          "wol_gan_han": "甲",
+          "wolju_kor": "갑술",
+          "wolju_han": "甲戌"
+        },
+        {
+          "jeolgi": "입동",
+          "wol_ji_kor": "해",
+          "wol_ji_han": "亥",
+          "wol_gan_kor": "을",
+          "wol_gan_han": "乙",
+          "wolju_kor": "을해",
+          "wolju_han": "乙亥"
+        },
+        {
+          "jeolgi": "대설",
+          "wol_ji_kor": "자",
+          "wol_ji_han": "子",
+          "wol_gan_kor": "병",
+          "wol_gan_han": "丙",
+          "wolju_kor": "병자",
+          "wolju_han": "丙子"
+        },
+        {
+          "jeolgi": "소한",
+          "wol_ji_kor": "축",
+          "wol_ji_han": "丑",
+          "wol_gan_kor": "정",
+          "wol_gan_han": "丁",
+          "wolju_kor": "정축",
+          "wolju_han": "丁丑"
+        }
+      ],
+      "을": [
+        {
+          "jeolgi": "입춘",
+          "wol_ji_kor": "인",
+          "wol_ji_han": "寅",
+          "wol_gan_kor": "무",
+          "wol_gan_han": "戊",
+          "wolju_kor": "무인",
+          "wolju_han": "戊寅"
+        },
+        {
+          "jeolgi": "경칩",
+          "wol_ji_kor": "묘",
+          "wol_ji_han": "卯",
+          "wol_gan_kor": "기",
+          "wol_gan_han": "己",
+          "wolju_kor": "기묘",
+          "wolju_han": "己卯"
+        },
+        {
+          "jeolgi": "청명",
+          "wol_ji_kor": "진",
+          "wol_ji_han": "辰",
+          "wol_gan_kor": "경",
+          "wol_gan_han": "庚",
+          "wolju_kor": "경진",
+          "wolju_han": "庚辰"
+        },
+        {
+          "jeolgi": "입하",
+          "wol_ji_kor": "사",
+          "wol_ji_han": "巳",
+          "wol_gan_kor": "신",
+          "wol_gan_han": "辛",
+          "wolju_kor": "신사",
+          "wolju_han": "辛巳"
+        },
+        {
+          "jeolgi": "망종",
+          "wol_ji_kor": "오",
+          "wol_ji_han": "午",
+          "wol_gan_kor": "임",
+          "wol_gan_han": "壬",
+          "wolju_kor": "임오",
+          "wolju_han": "壬午"
+        },
+        {
+          "jeolgi": "소서",
+          "wol_ji_kor": "미",
+          "wol_ji_han": "未",
+          "wol_gan_kor": "계",
+          "wol_gan_han": "癸",
+          "wolju_kor": "계미",
+          "wolju_han": "癸未"
+        },
+        {
+          "jeolgi": "입추",
+          "wol_ji_kor": "신",
+          "wol_ji_han": "申",
+          "wol_gan_kor": "갑",
+          "wol_gan_han": "甲",
+          "wolju_kor": "갑신",
+          "wolju_han": "甲申"
+        },
+        {
+          "jeolgi": "백로",
+          "wol_ji_kor": "유",
+          "wol_ji_han": "酉",
+          "wol_gan_kor": "을",
+          "wol_gan_han": "乙",
+          "wolju_kor": "을유",
+          "wolju_han": "乙酉"
+        },
+        {
+          "jeolgi": "한로",
+          "wol_ji_kor": "술",
+          "wol_ji_han": "戌",
+          "wol_gan_kor": "병",
+          "wol_gan_han": "丙",
+          "wolju_kor": "병술",
+          "wolju_han": "丙戌"
+        },
+        {
+          "jeolgi": "입동",
+          "wol_ji_kor": "해",
+          "wol_ji_han": "亥",
+          "wol_gan_kor": "정",
+          "wol_gan_han": "丁",
+          "wolju_kor": "정해",
+          "wolju_han": "丁亥"
+        },
+        {
+          "jeolgi": "대설",
+          "wol_ji_kor": "자",
+          "wol_ji_han": "子",
+          "wol_gan_kor": "무",
+          "wol_gan_han": "戊",
+          "wolju_kor": "무자",
+          "wolju_han": "戊子"
+        },
+        {
+          "jeolgi": "소한",
+          "wol_ji_kor": "축",
+          "wol_ji_han": "丑",
+          "wol_gan_kor": "기",
+          "wol_gan_han": "己",
+          "wolju_kor": "기축",
+          "wolju_han": "己丑"
+        }
+      ],
+      "병": [
+        {
+          "jeolgi": "입춘",
+          "wol_ji_kor": "인",
+          "wol_ji_han": "寅",
+          "wol_gan_kor": "경",
+          "wol_gan_han": "庚",
+          "wolju_kor": "경인",
+          "wolju_han": "庚寅"
+        },
+        {
+          "jeolgi": "경칩",
+          "wol_ji_kor": "묘",
+          "wol_ji_han": "卯",
+          "wol_gan_kor": "신",
+          "wol_gan_han": "辛",
+          "wolju_kor": "신묘",
+          "wolju_han": "辛卯"
+        },
+        {
+          "jeolgi": "청명",
+          "wol_ji_kor": "진",
+          "wol_ji_han": "辰",
+          "wol_gan_kor": "임",
+          "wol_gan_han": "壬",
+          "wolju_kor": "임진",
+          "wolju_han": "壬辰"
+        },
+        {
+          "jeolgi": "입하",
+          "wol_ji_kor": "사",
+          "wol_ji_han": "巳",
+          "wol_gan_kor": "계",
+          "wol_gan_han": "癸",
+          "wolju_kor": "계사",
+          "wolju_han": "癸巳"
+        },
+        {
+          "jeolgi": "망종",
+          "wol_ji_kor": "오",
+          "wol_ji_han": "午",
+          "wol_gan_kor": "갑",
+          "wol_gan_han": "甲",
+          "wolju_kor": "갑오",
+          "wolju_han": "甲午"
+        },
+        {
+          "jeolgi": "소서",
+          "wol_ji_kor": "미",
+          "wol_ji_han": "未",
+          "wol_gan_kor": "을",
+          "wol_gan_han": "乙",
+          "wolju_kor": "을미",
+          "wolju_han": "乙未"
+        },
+        {
+          "jeolgi": "입추",
+          "wol_ji_kor": "신",
+          "wol_ji_han": "申",
+          "wol_gan_kor": "병",
+          "wol_gan_han": "丙",
+          "wolju_kor": "병신",
+          "wolju_han": "丙申"
+        },
+        {
+          "jeolgi": "백로",
+          "wol_ji_kor": "유",
+          "wol_ji_han": "酉",
+          "wol_gan_kor": "정",
+          "wol_gan_han": "丁",
+          "wolju_kor": "정유",
+          "wolju_han": "丁酉"
+        },
+        {
+          "jeolgi": "한로",
+          "wol_ji_kor": "술",
+          "wol_ji_han": "戌",
+          "wol_gan_kor": "무",
+          "wol_gan_han": "戊",
+          "wolju_kor": "무술",
+          "wolju_han": "戊戌"
+        },
+        {
+          "jeolgi": "입동",
+          "wol_ji_kor": "해",
+          "wol_ji_han": "亥",
+          "wol_gan_kor": "기",
+          "wol_gan_han": "己",
+          "wolju_kor": "기해",
+          "wolju_han": "己亥"
+        },
+        {
+          "jeolgi": "대설",
+          "wol_ji_kor": "자",
+          "wol_ji_han": "子",
+          "wol_gan_kor": "경",
+          "wol_gan_han": "庚",
+          "wolju_kor": "경자",
+          "wolju_han": "庚子"
+        },
+        {
+          "jeolgi": "소한",
+          "wol_ji_kor": "축",
+          "wol_ji_han": "丑",
+          "wol_gan_kor": "신",
+          "wol_gan_han": "辛",
+          "wolju_kor": "신축",
+          "wolju_han": "辛丑"
+        }
+      ],
+      "정": [
+        {
+          "jeolgi": "입춘",
+          "wol_ji_kor": "인",
+          "wol_ji_han": "寅",
+          "wol_gan_kor": "임",
+          "wol_gan_han": "壬",
+          "wolju_kor": "임인",
+          "wolju_han": "壬寅"
+        },
+        {
+          "jeolgi": "경칩",
+          "wol_ji_kor": "묘",
+          "wol_ji_han": "卯",
+          "wol_gan_kor": "계",
+          "wol_gan_han": "癸",
+          "wolju_kor": "계묘",
+          "wolju_han": "癸卯"
+        },
+        {
+          "jeolgi": "청명",
+          "wol_ji_kor": "진",
+          "wol_ji_han": "辰",
+          "wol_gan_kor": "갑",
+          "wol_gan_han": "甲",
+          "wolju_kor": "갑진",
+          "wolju_han": "甲辰"
+        },
+        {
+          "jeolgi": "입하",
+          "wol_ji_kor": "사",
+          "wol_ji_han": "巳",
+          "wol_gan_kor": "을",
+          "wol_gan_han": "乙",
+          "wolju_kor": "을사",
+          "wolju_han": "乙巳"
+        },
+        {
+          "jeolgi": "망종",
+          "wol_ji_kor": "오",
+          "wol_ji_han": "午",
+          "wol_gan_kor": "병",
+          "wol_gan_han": "丙",
+          "wolju_kor": "병오",
+          "wolju_han": "丙午"
+        },
+        {
+          "jeolgi": "소서",
+          "wol_ji_kor": "미",
+          "wol_ji_han": "未",
+          "wol_gan_kor": "정",
+          "wol_gan_han": "丁",
+          "wolju_kor": "정미",
+          "wolju_han": "丁未"
+        },
+        {
+          "jeolgi": "입추",
+          "wol_ji_kor": "신",
+          "wol_ji_han": "申",
+          "wol_gan_kor": "무",
+          "wol_gan_han": "戊",
+          "wolju_kor": "무신",
+          "wolju_han": "戊申"
+        },
+        {
+          "jeolgi": "백로",
+          "wol_ji_kor": "유",
+          "wol_ji_han": "酉",
+          "wol_gan_kor": "기",
+          "wol_gan_han": "己",
+          "wolju_kor": "기유",
+          "wolju_han": "己酉"
+        },
+        {
+          "jeolgi": "한로",
+          "wol_ji_kor": "술",
+          "wol_ji_han": "戌",
+          "wol_gan_kor": "경",
+          "wol_gan_han": "庚",
+          "wolju_kor": "경술",
+          "wolju_han": "庚戌"
+        },
+        {
+          "jeolgi": "입동",
+          "wol_ji_kor": "해",
+          "wol_ji_han": "亥",
+          "wol_gan_kor": "신",
+          "wol_gan_han": "辛",
+          "wolju_kor": "신해",
+          "wolju_han": "辛亥"
+        },
+        {
+          "jeolgi": "대설",
+          "wol_ji_kor": "자",
+          "wol_ji_han": "子",
+          "wol_gan_kor": "임",
+          "wol_gan_han": "壬",
+          "wolju_kor": "임자",
+          "wolju_han": "壬子"
+        },
+        {
+          "jeolgi": "소한",
+          "wol_ji_kor": "축",
+          "wol_ji_han": "丑",
+          "wol_gan_kor": "계",
+          "wol_gan_han": "癸",
+          "wolju_kor": "계축",
+          "wolju_han": "癸丑"
+        }
+      ],
+      "무": [
+        {
+          "jeolgi": "입춘",
+          "wol_ji_kor": "인",
+          "wol_ji_han": "寅",
+          "wol_gan_kor": "갑",
+          "wol_gan_han": "甲",
+          "wolju_kor": "갑인",
+          "wolju_han": "甲寅"
+        },
+        {
+          "jeolgi": "경칩",
+          "wol_ji_kor": "묘",
+          "wol_ji_han": "卯",
+          "wol_gan_kor": "을",
+          "wol_gan_han": "乙",
+          "wolju_kor": "을묘",
+          "wolju_han": "乙卯"
+        },
+        {
+          "jeolgi": "청명",
+          "wol_ji_kor": "진",
+          "wol_ji_han": "辰",
+          "wol_gan_kor": "병",
+          "wol_gan_han": "丙",
+          "wolju_kor": "병진",
+          "wolju_han": "丙辰"
+        },
+        {
+          "jeolgi": "입하",
+          "wol_ji_kor": "사",
+          "wol_ji_han": "巳",
+          "wol_gan_kor": "정",
+          "wol_gan_han": "丁",
+          "wolju_kor": "정사",
+          "wolju_han": "丁巳"
+        },
+        {
+          "jeolgi": "망종",
+          "wol_ji_kor": "오",
+          "wol_ji_han": "午",
+          "wol_gan_kor": "무",
+          "wol_gan_han": "戊",
+          "wolju_kor": "무오",
+          "wolju_han": "戊午"
+        },
+        {
+          "jeolgi": "소서",
+          "wol_ji_kor": "미",
+          "wol_ji_han": "未",
+          "wol_gan_kor": "기",
+          "wol_gan_han": "己",
+          "wolju_kor": "기미",
+          "wolju_han": "己未"
+        },
+        {
+          "jeolgi": "입추",
+          "wol_ji_kor": "신",
+          "wol_ji_han": "申",
+          "wol_gan_kor": "경",
+          "wol_gan_han": "庚",
+          "wolju_kor": "경신",
+          "wolju_han": "庚申"
+        },
+        {
+          "jeolgi": "백로",
+          "wol_ji_kor": "유",
+          "wol_ji_han": "酉",
+          "wol_gan_kor": "신",
+          "wol_gan_han": "辛",
+          "wolju_kor": "신유",
+          "wolju_han": "辛酉"
+        },
+        {
+          "jeolgi": "한로",
+          "wol_ji_kor": "술",
+          "wol_ji_han": "戌",
+          "wol_gan_kor": "임",
+          "wol_gan_han": "壬",
+          "wolju_kor": "임술",
+          "wolju_han": "壬戌"
+        },
+        {
+          "jeolgi": "입동",
+          "wol_ji_kor": "해",
+          "wol_ji_han": "亥",
+          "wol_gan_kor": "계",
+          "wol_gan_han": "癸",
+          "wolju_kor": "계해",
+          "wolju_han": "癸亥"
+        },
+        {
+          "jeolgi": "대설",
+          "wol_ji_kor": "자",
+          "wol_ji_han": "子",
+          "wol_gan_kor": "갑",
+          "wol_gan_han": "甲",
+          "wolju_kor": "갑자",
+          "wolju_han": "甲子"
+        },
+        {
+          "jeolgi": "소한",
+          "wol_ji_kor": "축",
+          "wol_ji_han": "丑",
+          "wol_gan_kor": "을",
+          "wol_gan_han": "乙",
+          "wolju_kor": "을축",
+          "wolju_han": "乙丑"
+        }
+      ],
+      "기": [
+        {
+          "jeolgi": "입춘",
+          "wol_ji_kor": "인",
+          "wol_ji_han": "寅",
+          "wol_gan_kor": "병",
+          "wol_gan_han": "丙",
+          "wolju_kor": "병인",
+          "wolju_han": "丙寅"
+        },
+        {
+          "jeolgi": "경칩",
+          "wol_ji_kor": "묘",
+          "wol_ji_han": "卯",
+          "wol_gan_kor": "정",
+          "wol_gan_han": "丁",
+          "wolju_kor": "정묘",
+          "wolju_han": "丁卯"
+        },
+        {
+          "jeolgi": "청명",
+          "wol_ji_kor": "진",
+          "wol_ji_han": "辰",
+          "wol_gan_kor": "무",
+          "wol_gan_han": "戊",
+          "wolju_kor": "무진",
+          "wolju_han": "戊辰"
+        },
+        {
+          "jeolgi": "입하",
+          "wol_ji_kor": "사",
+          "wol_ji_han": "巳",
+          "wol_gan_kor": "기",
+          "wol_gan_han": "己",
+          "wolju_kor": "기사",
+          "wolju_han": "己巳"
+        },
+        {
+          "jeolgi": "망종",
+          "wol_ji_kor": "오",
+          "wol_ji_han": "午",
+          "wol_gan_kor": "경",
+          "wol_gan_han": "庚",
+          "wolju_kor": "경오",
+          "wolju_han": "庚午"
+        },
+        {
+          "jeolgi": "소서",
+          "wol_ji_kor": "미",
+          "wol_ji_han": "未",
+          "wol_gan_kor": "신",
+          "wol_gan_han": "辛",
+          "wolju_kor": "신미",
+          "wolju_han": "辛未"
+        },
+        {
+          "jeolgi": "입추",
+          "wol_ji_kor": "신",
+          "wol_ji_han": "申",
+          "wol_gan_kor": "임",
+          "wol_gan_han": "壬",
+          "wolju_kor": "임신",
+          "wolju_han": "壬申"
+        },
+        {
+          "jeolgi": "백로",
+          "wol_ji_kor": "유",
+          "wol_ji_han": "酉",
+          "wol_gan_kor": "계",
+          "wol_gan_han": "癸",
+          "wolju_kor": "계유",
+          "wolju_han": "癸酉"
+        },
+        {
+          "jeolgi": "한로",
+          "wol_ji_kor": "술",
+          "wol_ji_han": "戌",
+          "wol_gan_kor": "갑",
+          "wol_gan_han": "甲",
+          "wolju_kor": "갑술",
+          "wolju_han": "甲戌"
+        },
+        {
+          "jeolgi": "입동",
+          "wol_ji_kor": "해",
+          "wol_ji_han": "亥",
+          "wol_gan_kor": "을",
+          "wol_gan_han": "乙",
+          "wolju_kor": "을해",
+          "wolju_han": "乙亥"
+        },
+        {
+          "jeolgi": "대설",
+          "wol_ji_kor": "자",
+          "wol_ji_han": "子",
+          "wol_gan_kor": "병",
+          "wol_gan_han": "丙",
+          "wolju_kor": "병자",
+          "wolju_han": "丙子"
+        },
+        {
+          "jeolgi": "소한",
+          "wol_ji_kor": "축",
+          "wol_ji_han": "丑",
+          "wol_gan_kor": "정",
+          "wol_gan_han": "丁",
+          "wolju_kor": "정축",
+          "wolju_han": "丁丑"
+        }
+      ],
+      "경": [
+        {
+          "jeolgi": "입춘",
+          "wol_ji_kor": "인",
+          "wol_ji_han": "寅",
+          "wol_gan_kor": "무",
+          "wol_gan_han": "戊",
+          "wolju_kor": "무인",
+          "wolju_han": "戊寅"
+        },
+        {
+          "jeolgi": "경칩",
+          "wol_ji_kor": "묘",
+          "wol_ji_han": "卯",
+          "wol_gan_kor": "기",
+          "wol_gan_han": "己",
+          "wolju_kor": "기묘",
+          "wolju_han": "己卯"
+        },
+        {
+          "jeolgi": "청명",
+          "wol_ji_kor": "진",
+          "wol_ji_han": "辰",
+          "wol_gan_kor": "경",
+          "wol_gan_han": "庚",
+          "wolju_kor": "경진",
+          "wolju_han": "庚辰"
+        },
+        {
+          "jeolgi": "입하",
+          "wol_ji_kor": "사",
+          "wol_ji_han": "巳",
+          "wol_gan_kor": "신",
+          "wol_gan_han": "辛",
+          "wolju_kor": "신사",
+          "wolju_han": "辛巳"
+        },
+        {
+          "jeolgi": "망종",
+          "wol_ji_kor": "오",
+          "wol_ji_han": "午",
+          "wol_gan_kor": "임",
+          "wol_gan_han": "壬",
+          "wolju_kor": "임오",
+          "wolju_han": "壬午"
+        },
+        {
+          "jeolgi": "소서",
+          "wol_ji_kor": "미",
+          "wol_ji_han": "未",
+          "wol_gan_kor": "계",
+          "wol_gan_han": "癸",
+          "wolju_kor": "계미",
+          "wolju_han": "癸未"
+        },
+        {
+          "jeolgi": "입추",
+          "wol_ji_kor": "신",
+          "wol_ji_han": "申",
+          "wol_gan_kor": "갑",
+          "wol_gan_han": "甲",
+          "wolju_kor": "갑신",
+          "wolju_han": "甲申"
+        },
+        {
+          "jeolgi": "백로",
+          "wol_ji_kor": "유",
+          "wol_ji_han": "酉",
+          "wol_gan_kor": "을",
+          "wol_gan_han": "乙",
+          "wolju_kor": "을유",
+          "wolju_han": "乙酉"
+        },
+        {
+          "jeolgi": "한로",
+          "wol_ji_kor": "술",
+          "wol_ji_han": "戌",
+          "wol_gan_kor": "병",
+          "wol_gan_han": "丙",
+          "wolju_kor": "병술",
+          "wolju_han": "丙戌"
+        },
+        {
+          "jeolgi": "입동",
+          "wol_ji_kor": "해",
+          "wol_ji_han": "亥",
+          "wol_gan_kor": "정",
+          "wol_gan_han": "丁",
+          "wolju_kor": "정해",
+          "wolju_han": "丁亥"
+        },
+        {
+          "jeolgi": "대설",
+          "wol_ji_kor": "자",
+          "wol_ji_han": "子",
+          "wol_gan_kor": "무",
+          "wol_gan_han": "戊",
+          "wolju_kor": "무자",
+          "wolju_han": "戊子"
+        },
+        {
+          "jeolgi": "소한",
+          "wol_ji_kor": "축",
+          "wol_ji_han": "丑",
+          "wol_gan_kor": "기",
+          "wol_gan_han": "己",
+          "wolju_kor": "기축",
+          "wolju_han": "己丑"
+        }
+      ],
+      "신": [
+        {
+          "jeolgi": "입춘",
+          "wol_ji_kor": "인",
+          "wol_ji_han": "寅",
+          "wol_gan_kor": "경",
+          "wol_gan_han": "庚",
+          "wolju_kor": "경인",
+          "wolju_han": "庚寅"
+        },
+        {
+          "jeolgi": "경칩",
+          "wol_ji_kor": "묘",
+          "wol_ji_han": "卯",
+          "wol_gan_kor": "신",
+          "wol_gan_han": "辛",
+          "wolju_kor": "신묘",
+          "wolju_han": "辛卯"
+        },
+        {
+          "jeolgi": "청명",
+          "wol_ji_kor": "진",
+          "wol_ji_han": "辰",
+          "wol_gan_kor": "임",
+          "wol_gan_han": "壬",
+          "wolju_kor": "임진",
+          "wolju_han": "壬辰"
+        },
+        {
+          "jeolgi": "입하",
+          "wol_ji_kor": "사",
+          "wol_ji_han": "巳",
+          "wol_gan_kor": "계",
+          "wol_gan_han": "癸",
+          "wolju_kor": "계사",
+          "wolju_han": "癸巳"
+        },
+        {
+          "jeolgi": "망종",
+          "wol_ji_kor": "오",
+          "wol_ji_han": "午",
+          "wol_gan_kor": "갑",
+          "wol_gan_han": "甲",
+          "wolju_kor": "갑오",
+          "wolju_han": "甲午"
+        },
+        {
+          "jeolgi": "소서",
+          "wol_ji_kor": "미",
+          "wol_ji_han": "未",
+          "wol_gan_kor": "을",
+          "wol_gan_han": "乙",
+          "wolju_kor": "을미",
+          "wolju_han": "乙未"
+        },
+        {
+          "jeolgi": "입추",
+          "wol_ji_kor": "신",
+          "wol_ji_han": "申",
+          "wol_gan_kor": "병",
+          "wol_gan_han": "丙",
+          "wolju_kor": "병신",
+          "wolju_han": "丙申"
+        },
+        {
+          "jeolgi": "백로",
+          "wol_ji_kor": "유",
+          "wol_ji_han": "酉",
+          "wol_gan_kor": "정",
+          "wol_gan_han": "丁",
+          "wolju_kor": "정유",
+          "wolju_han": "丁酉"
+        },
+        {
+          "jeolgi": "한로",
+          "wol_ji_kor": "술",
+          "wol_ji_han": "戌",
+          "wol_gan_kor": "무",
+          "wol_gan_han": "戊",
+          "wolju_kor": "무술",
+          "wolju_han": "戊戌"
+        },
+        {
+          "jeolgi": "입동",
+          "wol_ji_kor": "해",
+          "wol_ji_han": "亥",
+          "wol_gan_kor": "기",
+          "wol_gan_han": "己",
+          "wolju_kor": "기해",
+          "wolju_han": "己亥"
+        },
+        {
+          "jeolgi": "대설",
+          "wol_ji_kor": "자",
+          "wol_ji_han": "子",
+          "wol_gan_kor": "경",
+          "wol_gan_han": "庚",
+          "wolju_kor": "경자",
+          "wolju_han": "庚子"
+        },
+        {
+          "jeolgi": "소한",
+          "wol_ji_kor": "축",
+          "wol_ji_han": "丑",
+          "wol_gan_kor": "신",
+          "wol_gan_han": "辛",
+          "wolju_kor": "신축",
+          "wolju_han": "辛丑"
+        }
+      ],
+      "임": [
+        {
+          "jeolgi": "입춘",
+          "wol_ji_kor": "인",
+          "wol_ji_han": "寅",
+          "wol_gan_kor": "임",
+          "wol_gan_han": "壬",
+          "wolju_kor": "임인",
+          "wolju_han": "壬寅"
+        },
+        {
+          "jeolgi": "경칩",
+          "wol_ji_kor": "묘",
+          "wol_ji_han": "卯",
+          "wol_gan_kor": "계",
+          "wol_gan_han": "癸",
+          "wolju_kor": "계묘",
+          "wolju_han": "癸卯"
+        },
+        {
+          "jeolgi": "청명",
+          "wol_ji_kor": "진",
+          "wol_ji_han": "辰",
+          "wol_gan_kor": "갑",
+          "wol_gan_han": "甲",
+          "wolju_kor": "갑진",
+          "wolju_han": "甲辰"
+        },
+        {
+          "jeolgi": "입하",
+          "wol_ji_kor": "사",
+          "wol_ji_han": "巳",
+          "wol_gan_kor": "을",
+          "wol_gan_han": "乙",
+          "wolju_kor": "을사",
+          "wolju_han": "乙巳"
+        },
+        {
+          "jeolgi": "망종",
+          "wol_ji_kor": "오",
+          "wol_ji_han": "午",
+          "wol_gan_kor": "병",
+          "wol_gan_han": "丙",
+          "wolju_kor": "병오",
+          "wolju_han": "丙午"
+        },
+        {
+          "jeolgi": "소서",
+          "wol_ji_kor": "미",
+          "wol_ji_han": "未",
+          "wol_gan_kor": "정",
+          "wol_gan_han": "丁",
+          "wolju_kor": "정미",
+          "wolju_han": "丁未"
+        },
+        {
+          "jeolgi": "입추",
+          "wol_ji_kor": "신",
+          "wol_ji_han": "申",
+          "wol_gan_kor": "무",
+          "wol_gan_han": "戊",
+          "wolju_kor": "무신",
+          "wolju_han": "戊申"
+        },
+        {
+          "jeolgi": "백로",
+          "wol_ji_kor": "유",
+          "wol_ji_han": "酉",
+          "wol_gan_kor": "기",
+          "wol_gan_han": "己",
+          "wolju_kor": "기유",
+          "wolju_han": "己酉"
+        },
+        {
+          "jeolgi": "한로",
+          "wol_ji_kor": "술",
+          "wol_ji_han": "戌",
+          "wol_gan_kor": "경",
+          "wol_gan_han": "庚",
+          "wolju_kor": "경술",
+          "wolju_han": "庚戌"
+        },
+        {
+          "jeolgi": "입동",
+          "wol_ji_kor": "해",
+          "wol_ji_han": "亥",
+          "wol_gan_kor": "신",
+          "wol_gan_han": "辛",
+          "wolju_kor": "신해",
+          "wolju_han": "辛亥"
+        },
+        {
+          "jeolgi": "대설",
+          "wol_ji_kor": "자",
+          "wol_ji_han": "子",
+          "wol_gan_kor": "임",
+          "wol_gan_han": "壬",
+          "wolju_kor": "임자",
+          "wolju_han": "壬子"
+        },
+        {
+          "jeolgi": "소한",
+          "wol_ji_kor": "축",
+          "wol_ji_han": "丑",
+          "wol_gan_kor": "계",
+          "wol_gan_han": "癸",
+          "wolju_kor": "계축",
+          "wolju_han": "癸丑"
+        }
+      ],
+      "계": [
+        {
+          "jeolgi": "입춘",
+          "wol_ji_kor": "인",
+          "wol_ji_han": "寅",
+          "wol_gan_kor": "갑",
+          "wol_gan_han": "甲",
+          "wolju_kor": "갑인",
+          "wolju_han": "甲寅"
+        },
+        {
+          "jeolgi": "경칩",
+          "wol_ji_kor": "묘",
+          "wol_ji_han": "卯",
+          "wol_gan_kor": "을",
+          "wol_gan_han": "乙",
+          "wolju_kor": "을묘",
+          "wolju_han": "乙卯"
+        },
+        {
+          "jeolgi": "청명",
+          "wol_ji_kor": "진",
+          "wol_ji_han": "辰",
+          "wol_gan_kor": "병",
+          "wol_gan_han": "丙",
+          "wolju_kor": "병진",
+          "wolju_han": "丙辰"
+        },
+        {
+          "jeolgi": "입하",
+          "wol_ji_kor": "사",
+          "wol_ji_han": "巳",
+          "wol_gan_kor": "정",
+          "wol_gan_han": "丁",
+          "wolju_kor": "정사",
+          "wolju_han": "丁巳"
+        },
+        {
+          "jeolgi": "망종",
+          "wol_ji_kor": "오",
+          "wol_ji_han": "午",
+          "wol_gan_kor": "무",
+          "wol_gan_han": "戊",
+          "wolju_kor": "무오",
+          "wolju_han": "戊午"
+        },
+        {
+          "jeolgi": "소서",
+          "wol_ji_kor": "미",
+          "wol_ji_han": "未",
+          "wol_gan_kor": "기",
+          "wol_gan_han": "己",
+          "wolju_kor": "기미",
+          "wolju_han": "己未"
+        },
+        {
+          "jeolgi": "입추",
+          "wol_ji_kor": "신",
+          "wol_ji_han": "申",
+          "wol_gan_kor": "경",
+          "wol_gan_han": "庚",
+          "wolju_kor": "경신",
+          "wolju_han": "庚申"
+        },
+        {
+          "jeolgi": "백로",
+          "wol_ji_kor": "유",
+          "wol_ji_han": "酉",
+          "wol_gan_kor": "신",
+          "wol_gan_han": "辛",
+          "wolju_kor": "신유",
+          "wolju_han": "辛酉"
+        },
+        {
+          "jeolgi": "한로",
+          "wol_ji_kor": "술",
+          "wol_ji_han": "戌",
+          "wol_gan_kor": "임",
+          "wol_gan_han": "壬",
+          "wolju_kor": "임술",
+          "wolju_han": "壬戌"
+        },
+        {
+          "jeolgi": "입동",
+          "wol_ji_kor": "해",
+          "wol_ji_han": "亥",
+          "wol_gan_kor": "계",
+          "wol_gan_han": "癸",
+          "wolju_kor": "계해",
+          "wolju_han": "癸亥"
+        },
+        {
+          "jeolgi": "대설",
+          "wol_ji_kor": "자",
+          "wol_ji_han": "子",
+          "wol_gan_kor": "갑",
+          "wol_gan_han": "甲",
+          "wolju_kor": "갑자",
+          "wolju_han": "甲子"
+        },
+        {
+          "jeolgi": "소한",
+          "wol_ji_kor": "축",
+          "wol_ji_han": "丑",
+          "wol_gan_kor": "을",
+          "wol_gan_han": "乙",
+          "wolju_kor": "을축",
+          "wolju_han": "乙丑"
+        }
+      ]
+    },
+    "odubeop_rule": {
+      "갑": "병",
+      "기": "병",
+      "을": "무",
+      "경": "무",
+      "병": "경",
+      "신": "경",
+      "정": "임",
+      "임": "임",
+      "무": "갑",
+      "계": "갑"
+    }
+  },
+  "time_correction": {
+    "default_correction_minutes": -32,
+    "default_note": "동경 135° 표준시 → 서울 기준 평균태양시 성격의 경도 보정 -32분. 균시차/진태양시/시태양시는 적용하지 않음.",
+    "standard_time_history": [
+      {
+        "start": "1908-04-01",
+        "end": "1911-12-31",
+        "offset_minutes": 510,
+        "note": "동경 127.5° (UTC+8:30) — 보정 없음"
+      },
+      {
+        "start": "1912-01-01",
+        "end": "1954-03-20",
+        "offset_minutes": 540,
+        "note": "동경 135° (UTC+9) — 표준 -32분 보정"
+      },
+      {
+        "start": "1954-03-21",
+        "end": "1961-08-09",
+        "offset_minutes": 510,
+        "note": "동경 127.5° (UTC+8:30) — 보정 없음"
+      },
+      {
+        "start": "1961-08-10",
+        "end": "9999-12-31",
+        "offset_minutes": 540,
+        "note": "동경 135° (UTC+9) — 표준 -32분 보정"
+      }
+    ],
+    "summer_time_periods": [
+      {
+        "start": "1948-06-01 00:00",
+        "end": "1948-09-13 00:00",
+        "offset_minutes": -60
+      },
+      {
+        "start": "1949-04-03 00:00",
+        "end": "1949-09-11 00:00",
+        "offset_minutes": -60
+      },
+      {
+        "start": "1950-04-01 00:00",
+        "end": "1950-09-10 00:00",
+        "offset_minutes": -60
+      },
+      {
+        "start": "1951-05-06 00:00",
+        "end": "1951-09-09 00:00",
+        "offset_minutes": -60
+      },
+      {
+        "start": "1955-05-05 00:00",
+        "end": "1955-09-09 00:00",
+        "offset_minutes": -60
+      },
+      {
+        "start": "1956-05-20 00:00",
+        "end": "1956-09-30 00:00",
+        "offset_minutes": -60
+      },
+      {
+        "start": "1957-05-05 00:00",
+        "end": "1957-09-22 00:00",
+        "offset_minutes": -60
+      },
+      {
+        "start": "1958-05-04 00:00",
+        "end": "1958-09-21 00:00",
+        "offset_minutes": -60
+      },
+      {
+        "start": "1959-05-03 00:00",
+        "end": "1959-09-20 00:00",
+        "offset_minutes": -60
+      },
+      {
+        "start": "1960-05-01 00:00",
+        "end": "1960-09-18 00:00",
+        "offset_minutes": -60
+      },
+      {
+        "start": "1987-05-10 02:00",
+        "end": "1987-10-11 03:00",
+        "offset_minutes": -60
+      },
+      {
+        "start": "1988-05-08 02:00",
+        "end": "1988-10-09 03:00",
+        "offset_minutes": -60
+      }
+    ],
+    "rule_order": [
+      "1) 입력시각을 당시 대한민국 법정 시계 시간으로 간주한다.",
+      "2) zoneinfo:Asia/Seoul로 과거 표준시/서머타임을 fixed KST(+09:00) 기준으로 환산한다.",
+      "3) 서울 경도 보정 -32분을 적용한다.",
+      "4) 보정 후 시각으로 년주/월주/시지를 판정한다.",
+      "5) 일주는 보정 후 날짜가 아니라 입력 양력 일자의 일진을 그대로 사용한다."
+    ]
+  },
+  "gapja_60_kor": [
+    "갑자",
+    "을축",
+    "병인",
+    "정묘",
+    "무진",
+    "기사",
+    "경오",
+    "신미",
+    "임신",
+    "계유",
+    "갑술",
+    "을해",
+    "병자",
+    "정축",
+    "무인",
+    "기묘",
+    "경진",
+    "신사",
+    "임오",
+    "계미",
+    "갑신",
+    "을유",
+    "병술",
+    "정해",
+    "무자",
+    "기축",
+    "경인",
+    "신묘",
+    "임진",
+    "계사",
+    "갑오",
+    "을미",
+    "병신",
+    "정유",
+    "무술",
+    "기해",
+    "경자",
+    "신축",
+    "임인",
+    "계묘",
+    "갑진",
+    "을사",
+    "병오",
+    "정미",
+    "무신",
+    "기유",
+    "경술",
+    "신해",
+    "임자",
+    "계축",
+    "갑인",
+    "을묘",
+    "병진",
+    "정사",
+    "무오",
+    "기미",
+    "경신",
+    "신유",
+    "임술",
+    "계해"
+  ],
+  "gapja_60_han": [
+    "甲子",
+    "乙丑",
+    "丙寅",
+    "丁卯",
+    "戊辰",
+    "己巳",
+    "庚午",
+    "辛未",
+    "壬申",
+    "癸酉",
+    "甲戌",
+    "乙亥",
+    "丙子",
+    "丁丑",
+    "戊寅",
+    "己卯",
+    "庚辰",
+    "辛巳",
+    "壬午",
+    "癸未",
+    "甲申",
+    "乙酉",
+    "丙戌",
+    "丁亥",
+    "戊子",
+    "己丑",
+    "庚寅",
+    "辛卯",
+    "壬辰",
+    "癸巳",
+    "甲午",
+    "乙未",
+    "丙申",
+    "丁酉",
+    "戊戌",
+    "己亥",
+    "庚子",
+    "辛丑",
+    "壬寅",
+    "癸卯",
+    "甲辰",
+    "乙巳",
+    "丙午",
+    "丁未",
+    "戊申",
+    "己酉",
+    "庚戌",
+    "辛亥",
+    "壬子",
+    "癸丑",
+    "甲寅",
+    "乙卯",
+    "丙辰",
+    "丁巳",
+    "戊午",
+    "己未",
+    "庚申",
+    "辛酉",
+    "壬戌",
+    "癸亥"
+  ],
+  "gan_kor": [
+    "갑",
+    "을",
+    "병",
+    "정",
+    "무",
+    "기",
+    "경",
+    "신",
+    "임",
+    "계"
+  ],
+  "gan_han": [
+    "甲",
+    "乙",
+    "丙",
+    "丁",
+    "戊",
+    "己",
+    "庚",
+    "辛",
+    "壬",
+    "癸"
+  ],
+  "ji_kor": [
+    "자",
+    "축",
+    "인",
+    "묘",
+    "진",
+    "사",
+    "오",
+    "미",
+    "신",
+    "유",
+    "술",
+    "해"
+  ],
+  "ji_han": [
+    "子",
+    "丑",
+    "寅",
+    "卯",
+    "辰",
+    "巳",
+    "午",
+    "未",
+    "申",
+    "酉",
+    "戌",
+    "亥"
+  ],
+  "time_correction_policy_v0_6_1": {
+    "birthplace_input": false,
+    "birthplace_assumption": "Seoul",
+    "longitude_correction_minutes": -32,
+    "longitude_correction_basis": "Seoul local mean time / longitude correction only",
+    "apparent_solar_time": false,
+    "true_solar_time": false,
+    "equation_of_time": false,
+    "day_pillar_policy": "input_solar_date_preserved",
+    "zi_hour_range": "23:00-00:59",
+    "zi_hour_changes_day_pillar": false,
+    "note": "연주/월주/시지는 보정시각을 사용하지만, 일주는 사용자가 입력한 양력 일자의 일진을 그대로 사용한다."
+  }
+}

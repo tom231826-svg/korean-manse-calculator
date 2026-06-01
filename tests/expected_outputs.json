@@ -1,0 +1,218 @@
+{
+  "version": "0.7.0",
+  "description": "v0.7 smoke/ground-truth expected outputs",
+  "cases": [
+    {
+      "id": "T01_reference_A",
+      "status": "ok",
+      "version": "0.7.0",
+      "returncode": 0,
+      "summary": "己巳년 丙子월 丙寅일 己亥시",
+      "pillars": {
+        "year": "己巳",
+        "month": "丙子",
+        "day": "丙寅",
+        "hour": "己亥"
+      },
+      "corrected_time": "1990-01-01T22:58:00+09:00",
+      "day_pillar_date": "1990-01-01",
+      "corrected_date": "1990-01-01",
+      "month_jeolgi": "대설",
+      "month_jeolgi_time": "12:20"
+    },
+    {
+      "id": "T02_reference_B",
+      "status": "ok",
+      "version": "0.7.0",
+      "returncode": 0,
+      "summary": "己巳년 丙子월 丁卯일 庚子시",
+      "pillars": {
+        "year": "己巳",
+        "month": "丙子",
+        "day": "丁卯",
+        "hour": "庚子"
+      },
+      "corrected_time": "1990-01-01T23:58:00+09:00",
+      "day_pillar_date": "1990-01-02",
+      "corrected_date": "1990-01-01",
+      "month_jeolgi": "대설",
+      "month_jeolgi_time": "12:20"
+    },
+    {
+      "id": "T03_junseok",
+      "status": "ok",
+      "version": "0.7.0",
+      "returncode": 0,
+      "summary": "辛巳년 己亥월 丙戌일 甲午시",
+      "pillars": {
+        "year": "辛巳",
+        "month": "己亥",
+        "day": "丙戌",
+        "hour": "甲午"
+      },
+      "corrected_time": "2001-11-19T11:28:00+09:00",
+      "day_pillar_date": "2001-11-19",
+      "corrected_date": "2001-11-19",
+      "month_jeolgi": "입동",
+      "month_jeolgi_time": "17:37"
+    },
+    {
+      "id": "T04_skyfield",
+      "status": "ok",
+      "version": "0.7.0",
+      "returncode": 0,
+      "summary": "乙亥년 辛巳월 丙午일 乙未시",
+      "pillars": {
+        "year": "乙亥",
+        "month": "辛巳",
+        "day": "丙午",
+        "hour": "乙未"
+      },
+      "corrected_time": "1995-05-15T13:58:00+09:00",
+      "day_pillar_date": "1995-05-15",
+      "corrected_date": "1995-05-15",
+      "month_jeolgi": "입하",
+      "month_jeolgi_time": "08:30"
+    },
+    {
+      "id": "T05_ipchun_before",
+      "status": "ok",
+      "version": "0.7.0",
+      "returncode": 0,
+      "summary": "癸卯년 乙丑월 戊戌일 庚申시",
+      "pillars": {
+        "year": "癸卯",
+        "month": "乙丑",
+        "day": "戊戌",
+        "hour": "庚申"
+      },
+      "corrected_time": "2024-02-04T15:28:00+09:00",
+      "day_pillar_date": "2024-02-04",
+      "corrected_date": "2024-02-04",
+      "month_jeolgi": "소한",
+      "month_jeolgi_time": "05:49"
+    },
+    {
+      "id": "T06_ipchun_after",
+      "status": "ok",
+      "version": "0.7.0",
+      "returncode": 0,
+      "summary": "甲辰년 丙寅월 戊戌일 辛酉시",
+      "pillars": {
+        "year": "甲辰",
+        "month": "丙寅",
+        "day": "戊戌",
+        "hour": "辛酉"
+      },
+      "corrected_time": "2024-02-04T17:28:00+09:00",
+      "day_pillar_date": "2024-02-04",
+      "corrected_date": "2024-02-04",
+      "month_jeolgi": "입춘",
+      "month_jeolgi_time": "17:27"
+    },
+    {
+      "id": "T07_year_boundary",
+      "status": "ok",
+      "version": "0.7.0",
+      "returncode": 0,
+      "summary": "己丑년 丙子월 辛亥일 辛卯시",
+      "pillars": {
+        "year": "己丑",
+        "month": "丙子",
+        "day": "辛亥",
+        "hour": "辛卯"
+      },
+      "corrected_time": "2010-01-01T05:28:00+09:00",
+      "day_pillar_date": "2010-01-01",
+      "corrected_date": "2010-01-01",
+      "month_jeolgi": "대설",
+      "month_jeolgi_time": "08:52"
+    },
+    {
+      "id": "T08_jeolgi",
+      "status": "ok",
+      "version": "0.7.0",
+      "returncode": 0,
+      "summary": "庚子년 癸未월 壬午일 乙巳시",
+      "pillars": {
+        "year": "庚子",
+        "month": "癸未",
+        "day": "壬午",
+        "hour": "乙巳"
+      },
+      "corrected_time": "2020-08-07T09:28:00+09:00",
+      "day_pillar_date": "2020-08-07",
+      "corrected_date": "2020-08-07",
+      "month_jeolgi": "소서",
+      "month_jeolgi_time": "00:14"
+    },
+    {
+      "id": "T09_time_unknown",
+      "status": "ok",
+      "version": "0.7.0",
+      "returncode": 0,
+      "summary": "乙未년 甲申월 癸亥일 시주 미상",
+      "pillars": {
+        "year": "乙未",
+        "month": "甲申",
+        "day": "癸亥",
+        "hour": null
+      },
+      "corrected_time": null,
+      "day_pillar_date": "2015-08-15",
+      "corrected_date": "2015-08-15",
+      "month_jeolgi": "입추",
+      "month_jeolgi_time": "05:01"
+    },
+    {
+      "id": "T10_old_skyfield",
+      "status": "ok",
+      "version": "0.7.0",
+      "returncode": 0,
+      "summary": "乙巳년 壬午월 壬戌일 戊申시",
+      "pillars": {
+        "year": "乙巳",
+        "month": "壬午",
+        "day": "壬戌",
+        "hour": "戊申"
+      },
+      "corrected_time": "1965-07-07T15:28:00+09:00",
+      "day_pillar_date": "1965-07-07",
+      "corrected_date": "1965-07-07",
+      "month_jeolgi": "망종",
+      "month_jeolgi_time": "07:01"
+    },
+    {
+      "id": "T11_lunar_rejected",
+      "status": "unsupported_calendar",
+      "version": "0.7.0",
+      "returncode": 2,
+      "message": "v0.7.0은 양력 생년월일만 지원합니다. 음력/윤달 변환은 v1.x 이후 지원 예정입니다.",
+      "error": null
+    },
+    {
+      "id": "T12_year_out_of_range_low",
+      "status": "error",
+      "version": "0.7.0",
+      "returncode": 2,
+      "message": null,
+      "error": {
+        "reason": "year_out_of_range",
+        "message": "Year 1949 out of supported range 1950-2030",
+        "user_action_hint": "out_of_range_no_action"
+      }
+    },
+    {
+      "id": "T13_year_out_of_range_high",
+      "status": "error",
+      "version": "0.7.0",
+      "returncode": 2,
+      "message": null,
+      "error": {
+        "reason": "year_out_of_range",
+        "message": "Year 2031 out of supported range 1950-2030",
+        "user_action_hint": "out_of_range_no_action"
+      }
+    }
+  ]
+}

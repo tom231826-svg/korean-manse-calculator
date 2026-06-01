@@ -1,0 +1,201 @@
+{
+  "year": 1972,
+  "source_summary": {
+    "kasi": 0,
+    "skyfield": 24
+  },
+  "jeolgi": [
+    {
+      "name": "소한",
+      "hanja": "小寒",
+      "date": "1972-01-06",
+      "kst": "1972-01-06 14:41",
+      "sun_longitude": 285,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "대한",
+      "hanja": "大寒",
+      "date": "1972-01-21",
+      "kst": "1972-01-21 07:58",
+      "sun_longitude": 300,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "입춘",
+      "hanja": "立春",
+      "date": "1972-02-05",
+      "kst": "1972-02-05 02:20",
+      "sun_longitude": 315,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "우수",
+      "hanja": "雨水",
+      "date": "1972-02-19",
+      "kst": "1972-02-19 22:11",
+      "sun_longitude": 330,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "경칩",
+      "hanja": "驚蟄",
+      "date": "1972-03-05",
+      "kst": "1972-03-05 20:28",
+      "sun_longitude": 345,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "춘분",
+      "hanja": "春分",
+      "date": "1972-03-20",
+      "kst": "1972-03-20 21:21",
+      "sun_longitude": 0,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "청명",
+      "hanja": "淸明",
+      "date": "1972-04-05",
+      "kst": "1972-04-05 01:28",
+      "sun_longitude": 15,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "곡우",
+      "hanja": "穀雨",
+      "date": "1972-04-20",
+      "kst": "1972-04-20 08:37",
+      "sun_longitude": 30,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "입하",
+      "hanja": "立夏",
+      "date": "1972-05-05",
+      "kst": "1972-05-05 19:01",
+      "sun_longitude": 45,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "소만",
+      "hanja": "小滿",
+      "date": "1972-05-21",
+      "kst": "1972-05-21 07:59",
+      "sun_longitude": 60,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "망종",
+      "hanja": "芒種",
+      "date": "1972-06-05",
+      "kst": "1972-06-05 23:21",
+      "sun_longitude": 75,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "하지",
+      "hanja": "夏至",
+      "date": "1972-06-21",
+      "kst": "1972-06-21 16:06",
+      "sun_longitude": 90,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "소서",
+      "hanja": "小暑",
+      "date": "1972-07-07",
+      "kst": "1972-07-07 09:42",
+      "sun_longitude": 105,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "대서",
+      "hanja": "大暑",
+      "date": "1972-07-23",
+      "kst": "1972-07-23 03:02",
+      "sun_longitude": 120,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "입추",
+      "hanja": "立秋",
+      "date": "1972-08-07",
+      "kst": "1972-08-07 19:28",
+      "sun_longitude": 135,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "처서",
+      "hanja": "處暑",
+      "date": "1972-08-23",
+      "kst": "1972-08-23 10:02",
+      "sun_longitude": 150,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "백로",
+      "hanja": "白露",
+      "date": "1972-09-07",
+      "kst": "1972-09-07 22:15",
+      "sun_longitude": 165,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "추분",
+      "hanja": "秋分",
+      "date": "1972-09-23",
+      "kst": "1972-09-23 07:32",
+      "sun_longitude": 180,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "한로",
+      "hanja": "寒露",
+      "date": "1972-10-08",
+      "kst": "1972-10-08 13:41",
+      "sun_longitude": 195,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "상강",
+      "hanja": "霜降",
+      "date": "1972-10-23",
+      "kst": "1972-10-23 16:41",
+      "sun_longitude": 210,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "입동",
+      "hanja": "立冬",
+      "date": "1972-11-07",
+      "kst": "1972-11-07 16:39",
+      "sun_longitude": 225,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "소설",
+      "hanja": "小雪",
+      "date": "1972-11-22",
+      "kst": "1972-11-22 14:02",
+      "sun_longitude": 240,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "대설",
+      "hanja": "大雪",
+      "date": "1972-12-07",
+      "kst": "1972-12-07 09:18",
+      "sun_longitude": 255,
+      "source": "skyfield_de421"
+    },
+    {
+      "name": "동지",
+      "hanja": "冬至",
+      "date": "1972-12-22",
+      "kst": "1972-12-22 03:12",
+      "sun_longitude": 270,
+      "source": "skyfield_de421"
+    }
+  ]
+}

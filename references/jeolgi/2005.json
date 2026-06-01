@@ -1,0 +1,201 @@
+{
+  "year": 2005,
+  "source_summary": {
+    "kasi": 24,
+    "skyfield": 0
+  },
+  "jeolgi": [
+    {
+      "name": "소한",
+      "hanja": "小寒",
+      "date": "2005-01-05",
+      "kst": "2005-01-05 15:03",
+      "sun_longitude": 285,
+      "source": "kasi"
+    },
+    {
+      "name": "대한",
+      "hanja": "大寒",
+      "date": "2005-01-20",
+      "kst": "2005-01-20 08:22",
+      "sun_longitude": 300,
+      "source": "kasi"
+    },
+    {
+      "name": "입춘",
+      "hanja": "立春",
+      "date": "2005-02-04",
+      "kst": "2005-02-04 02:43",
+      "sun_longitude": 315,
+      "source": "kasi"
+    },
+    {
+      "name": "우수",
+      "hanja": "雨水",
+      "date": "2005-02-18",
+      "kst": "2005-02-18 22:32",
+      "sun_longitude": 330,
+      "source": "kasi"
+    },
+    {
+      "name": "경칩",
+      "hanja": "驚蟄",
+      "date": "2005-03-05",
+      "kst": "2005-03-05 20:45",
+      "sun_longitude": 345,
+      "source": "kasi"
+    },
+    {
+      "name": "춘분",
+      "hanja": "春分",
+      "date": "2005-03-20",
+      "kst": "2005-03-20 21:33",
+      "sun_longitude": 0,
+      "source": "kasi"
+    },
+    {
+      "name": "청명",
+      "hanja": "淸明",
+      "date": "2005-04-05",
+      "kst": "2005-04-05 01:34",
+      "sun_longitude": 15,
+      "source": "kasi"
+    },
+    {
+      "name": "곡우",
+      "hanja": "穀雨",
+      "date": "2005-04-20",
+      "kst": "2005-04-20 08:37",
+      "sun_longitude": 30,
+      "source": "kasi"
+    },
+    {
+      "name": "입하",
+      "hanja": "立夏",
+      "date": "2005-05-05",
+      "kst": "2005-05-05 18:53",
+      "sun_longitude": 45,
+      "source": "kasi"
+    },
+    {
+      "name": "소만",
+      "hanja": "小滿",
+      "date": "2005-05-21",
+      "kst": "2005-05-21 07:47",
+      "sun_longitude": 60,
+      "source": "kasi"
+    },
+    {
+      "name": "망종",
+      "hanja": "芒種",
+      "date": "2005-06-05",
+      "kst": "2005-06-05 23:02",
+      "sun_longitude": 75,
+      "source": "kasi"
+    },
+    {
+      "name": "하지",
+      "hanja": "夏至",
+      "date": "2005-06-21",
+      "kst": "2005-06-21 15:46",
+      "sun_longitude": 90,
+      "source": "kasi"
+    },
+    {
+      "name": "소서",
+      "hanja": "小暑",
+      "date": "2005-07-07",
+      "kst": "2005-07-07 09:17",
+      "sun_longitude": 105,
+      "source": "kasi"
+    },
+    {
+      "name": "대서",
+      "hanja": "大暑",
+      "date": "2005-07-23",
+      "kst": "2005-07-23 02:41",
+      "sun_longitude": 120,
+      "source": "kasi"
+    },
+    {
+      "name": "입추",
+      "hanja": "立秋",
+      "date": "2005-08-07",
+      "kst": "2005-08-07 19:03",
+      "sun_longitude": 135,
+      "source": "kasi"
+    },
+    {
+      "name": "처서",
+      "hanja": "處暑",
+      "date": "2005-08-23",
+      "kst": "2005-08-23 09:45",
+      "sun_longitude": 150,
+      "source": "kasi"
+    },
+    {
+      "name": "백로",
+      "hanja": "白露",
+      "date": "2005-09-07",
+      "kst": "2005-09-07 21:57",
+      "sun_longitude": 165,
+      "source": "kasi"
+    },
+    {
+      "name": "추분",
+      "hanja": "秋分",
+      "date": "2005-09-23",
+      "kst": "2005-09-23 07:23",
+      "sun_longitude": 180,
+      "source": "kasi"
+    },
+    {
+      "name": "한로",
+      "hanja": "寒露",
+      "date": "2005-10-08",
+      "kst": "2005-10-08 13:33",
+      "sun_longitude": 195,
+      "source": "kasi"
+    },
+    {
+      "name": "상강",
+      "hanja": "霜降",
+      "date": "2005-10-23",
+      "kst": "2005-10-23 16:42",
+      "sun_longitude": 210,
+      "source": "kasi"
+    },
+    {
+      "name": "입동",
+      "hanja": "立冬",
+      "date": "2005-11-07",
+      "kst": "2005-11-07 16:42",
+      "sun_longitude": 225,
+      "source": "kasi"
+    },
+    {
+      "name": "소설",
+      "hanja": "小雪",
+      "date": "2005-11-22",
+      "kst": "2005-11-22 14:15",
+      "sun_longitude": 240,
+      "source": "kasi"
+    },
+    {
+      "name": "대설",
+      "hanja": "大雪",
+      "date": "2005-12-07",
+      "kst": "2005-12-07 09:33",
+      "sun_longitude": 255,
+      "source": "kasi"
+    },
+    {
+      "name": "동지",
+      "hanja": "冬至",
+      "date": "2005-12-22",
+      "kst": "2005-12-22 03:35",
+      "sun_longitude": 270,
+      "source": "kasi"
+    }
+  ]
+}

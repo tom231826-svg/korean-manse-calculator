@@ -1,0 +1,201 @@
+{
+  "year": 2018,
+  "source_summary": {
+    "kasi": 24,
+    "skyfield": 0
+  },
+  "jeolgi": [
+    {
+      "name": "소한",
+      "hanja": "小寒",
+      "date": "2018-01-05",
+      "kst": "2018-01-05 18:49",
+      "sun_longitude": 285,
+      "source": "kasi"
+    },
+    {
+      "name": "대한",
+      "hanja": "大寒",
+      "date": "2018-01-20",
+      "kst": "2018-01-20 12:09",
+      "sun_longitude": 300,
+      "source": "kasi"
+    },
+    {
+      "name": "입춘",
+      "hanja": "立春",
+      "date": "2018-02-04",
+      "kst": "2018-02-04 06:28",
+      "sun_longitude": 315,
+      "source": "kasi"
+    },
+    {
+      "name": "우수",
+      "hanja": "雨水",
+      "date": "2018-02-19",
+      "kst": "2018-02-19 02:18",
+      "sun_longitude": 330,
+      "source": "kasi"
+    },
+    {
+      "name": "경칩",
+      "hanja": "驚蟄",
+      "date": "2018-03-06",
+      "kst": "2018-03-06 00:28",
+      "sun_longitude": 345,
+      "source": "kasi"
+    },
+    {
+      "name": "춘분",
+      "hanja": "春分",
+      "date": "2018-03-21",
+      "kst": "2018-03-21 01:15",
+      "sun_longitude": 0,
+      "source": "kasi"
+    },
+    {
+      "name": "청명",
+      "hanja": "淸明",
+      "date": "2018-04-05",
+      "kst": "2018-04-05 05:13",
+      "sun_longitude": 15,
+      "source": "kasi"
+    },
+    {
+      "name": "곡우",
+      "hanja": "穀雨",
+      "date": "2018-04-20",
+      "kst": "2018-04-20 12:13",
+      "sun_longitude": 30,
+      "source": "kasi"
+    },
+    {
+      "name": "입하",
+      "hanja": "立夏",
+      "date": "2018-05-05",
+      "kst": "2018-05-05 22:25",
+      "sun_longitude": 45,
+      "source": "kasi"
+    },
+    {
+      "name": "소만",
+      "hanja": "小滿",
+      "date": "2018-05-21",
+      "kst": "2018-05-21 11:15",
+      "sun_longitude": 60,
+      "source": "kasi"
+    },
+    {
+      "name": "망종",
+      "hanja": "芒種",
+      "date": "2018-06-06",
+      "kst": "2018-06-06 02:29",
+      "sun_longitude": 75,
+      "source": "kasi"
+    },
+    {
+      "name": "하지",
+      "hanja": "夏至",
+      "date": "2018-06-21",
+      "kst": "2018-06-21 19:07",
+      "sun_longitude": 90,
+      "source": "kasi"
+    },
+    {
+      "name": "소서",
+      "hanja": "小暑",
+      "date": "2018-07-07",
+      "kst": "2018-07-07 12:42",
+      "sun_longitude": 105,
+      "source": "kasi"
+    },
+    {
+      "name": "대서",
+      "hanja": "大暑",
+      "date": "2018-07-23",
+      "kst": "2018-07-23 06:00",
+      "sun_longitude": 120,
+      "source": "kasi"
+    },
+    {
+      "name": "입추",
+      "hanja": "立秋",
+      "date": "2018-08-07",
+      "kst": "2018-08-07 22:31",
+      "sun_longitude": 135,
+      "source": "kasi"
+    },
+    {
+      "name": "처서",
+      "hanja": "處暑",
+      "date": "2018-08-23",
+      "kst": "2018-08-23 13:09",
+      "sun_longitude": 150,
+      "source": "kasi"
+    },
+    {
+      "name": "백로",
+      "hanja": "白露",
+      "date": "2018-09-08",
+      "kst": "2018-09-08 01:30",
+      "sun_longitude": 165,
+      "source": "kasi"
+    },
+    {
+      "name": "추분",
+      "hanja": "秋分",
+      "date": "2018-09-23",
+      "kst": "2018-09-23 10:54",
+      "sun_longitude": 180,
+      "source": "kasi"
+    },
+    {
+      "name": "한로",
+      "hanja": "寒露",
+      "date": "2018-10-08",
+      "kst": "2018-10-08 17:15",
+      "sun_longitude": 195,
+      "source": "kasi"
+    },
+    {
+      "name": "상강",
+      "hanja": "霜降",
+      "date": "2018-10-23",
+      "kst": "2018-10-23 20:22",
+      "sun_longitude": 210,
+      "source": "kasi"
+    },
+    {
+      "name": "입동",
+      "hanja": "立冬",
+      "date": "2018-11-07",
+      "kst": "2018-11-07 20:32",
+      "sun_longitude": 225,
+      "source": "kasi"
+    },
+    {
+      "name": "소설",
+      "hanja": "小雪",
+      "date": "2018-11-22",
+      "kst": "2018-11-22 18:02",
+      "sun_longitude": 240,
+      "source": "kasi"
+    },
+    {
+      "name": "대설",
+      "hanja": "大雪",
+      "date": "2018-12-07",
+      "kst": "2018-12-07 13:26",
+      "sun_longitude": 255,
+      "source": "kasi"
+    },
+    {
+      "name": "동지",
+      "hanja": "冬至",
+      "date": "2018-12-22",
+      "kst": "2018-12-22 07:23",
+      "sun_longitude": 270,
+      "source": "kasi"
+    }
+  ]
+}

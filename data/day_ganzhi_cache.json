@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "storage": "split_by_year",
+    "path": "data/day_ganzhi_by_year/{YYYY}.json",
+    "coverage": "1950-2030",
+    "entries": 29585,
+    "source": "generated_ilju_cache_formula_crosschecked"
+  }
+}

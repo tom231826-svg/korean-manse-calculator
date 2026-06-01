@@ -1,0 +1,11 @@
+{
+  "policy": "Asia/Seoul legal time normalized to fixed KST(+09:00)",
+  "implementation": "Python zoneinfo standard library",
+  "dst_handling": "auto",
+  "notes": [
+    "사용자 입력 출생시간은 당시 대한민국 법정 시계 시간으로 간주한다.",
+    "zoneinfo:Asia/Seoul을 통해 과거 표준시/서머타임 이력을 적용한 뒤 고정 KST(+09:00) 기준으로 환산한다.",
+    "출생지는 입력받지 않지만 서울 기본값 기준 -32분 경도 보정을 적용한다. 진태양시/시태양시는 적용하지 않는다."
+  ],
+  "v0_6_1_note": "출생지는 입력받지 않지만 서울 기본값 기준 -32분 경도 보정을 적용한다. 진태양시/시태양시/균시차는 적용하지 않는다."
+}
