@@ -1,19 +1,21 @@
 #!/usr/bin/env python3
 """
-Korean Manse Calculator v0.7.0
+Korean Manse Calculator v0.8.0
 
-국내/서울 기준 양력 생년월일로 사주 만세력의 연주/월주/일주/시주를 산출한다.
-- v0.7.0은 양력만 지원한다.
+국내/서울 기준 생년월일로 사주 만세력의 연주/월주/일주/시주를 산출한다.
+- v0.8.0은 양력 입력과 오프라인 cache 기반 음력/윤달 입력을 지원한다.
 - 출생지는 사용자에게 받지 않고 서울을 기본값으로 둔다.
 - 대한민국 법정시/서머타임을 fixed KST(+09:00)로 정규화한 뒤 서울 기준 경도 보정 -32분을 적용한다.
 - 진태양시/시태양시(균시차) 보정은 지원하지 않는다.
 - 절기는 KASI 특일정보 API dateKind=03의 kst 시각 또는 사전 생성 캐시를 사용한다.
-- 일주는 보정시각으로 날짜를 바꾸지 않고 사용자가 입력한 양력 날짜의 일진을 그대로 사용한다.
+- 음력 입력은 먼저 양력으로 변환한 뒤 기존 양력 기반 계산 흐름을 그대로 사용한다.
+- 일주는 보정시각으로 날짜를 바꾸지 않고 계산 기준 양력 날짜의 일진을 그대로 사용한다.
   KASI 음양력 API lunIljin 또는 양력 날짜 캐시를 우선 사용하고, 없으면 JDN 공식 fallback을 사용한다.
 
 CLI examples:
   python3 scripts/calculate_manse.py --date 2001-11-19 --time 14:30 --gender male
   python3 scripts/calculate_manse.py --date 1988-07-01 --time 00:30 --gender female
+  python3 scripts/calculate_manse.py --calendar lunar --date 2001-08-14 --lunar-leap false --time 12:00
   KASI_SPCDE_SERVICE_KEY="<your-data-go-kr-service-key>" KASI_LRSR_SERVICE_KEY="<your-data-go-kr-service-key>" python3 scripts/calculate_manse.py --date 2001-11-19 --time 14:30
 """
 from __future__ import annotations
@@ -35,8 +37,8 @@ try:
 except Exception:  # pragma: no cover
     ZoneInfo = None  # type: ignore
 
-PROFILE_NAME = "seoul_corrected_manse_v0.7"
-PROFILE_VERSION = "0.7.0"
+PROFILE_NAME = "seoul_corrected_manse_v0.8"
+PROFILE_VERSION = "0.8.0"
 KASI_BASE = "http://apis.data.go.kr/B090041/openapi/service"
 KST_FIXED = timezone(timedelta(hours=9), name="KST")
 
@@ -47,7 +49,7 @@ DEFAULT_BIRTHPLACE = {
     "standard_meridian": 135.0,
 }
 # 서울 경도 126.978E와 한국 표준자오선 135E의 차이: 약 -32.088분.
-# v0.7.0 정책상 분 단위 정밀도에 맞춰 -32분을 고정 적용한다.
+# v0.8.0 정책상 분 단위 정밀도에 맞춰 -32분을 고정 적용한다.
 SEOUL_LONGITUDE_CORRECTION_MINUTES = -32
 
 STEMS_HAN = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"]
@@ -76,7 +78,7 @@ MONTH_BOUNDARY_TERM_TO_BRANCH = {
     "소한": "丑",
 }
 
-# 24절기 태양황경 대응표. 데이터 라벨과 sunLongitude가 충돌하면 v0.7 정책상 sunLongitude를 우선 신뢰한다.
+# 24절기 태양황경 대응표. 데이터 라벨과 sunLongitude가 충돌하면 v0.8 정책상 sunLongitude를 우선 신뢰한다.
 SOLAR_TERM_BY_LONGITUDE = {
     0: "춘분", 15: "청명", 30: "곡우", 45: "입하", 60: "소만", 75: "망종",
     90: "하지", 105: "소서", 120: "대서", 135: "입추", 150: "처서", 165: "백로",
@@ -192,6 +194,16 @@ class GanZhi:
         return BRANCHES_HAN.index(self.branch)
 
 
+@dataclass(frozen=True)
+class LunarInputDate:
+    year: int
+    month: int
+    day: int
+
+    def isoformat(self) -> str:
+        return f"{self.year:04d}-{self.month:02d}-{self.day:02d}"
+
+
 def package_root() -> Path:
     return Path(__file__).resolve().parents[1]
 
@@ -207,6 +219,19 @@ def parse_date(s: str) -> date:
         raise ManseError("date는 YYYY-MM-DD 형식이어야 합니다.") from exc
 
 
+def parse_lunar_date(s: str) -> LunarInputDate:
+    parts = s.split("-")
+    if len(parts) != 3:
+        raise ManseError("음력 date는 YYYY-MM-DD 형식이어야 합니다.")
+    try:
+        y, m, d = (int(part) for part in parts)
+    except ValueError as exc:
+        raise ManseError("음력 date는 YYYY-MM-DD 형식이어야 합니다.") from exc
+    if y < 1 or not (1 <= m <= 12) or not (1 <= d <= 30):
+        raise ManseError("음력 date의 월/일 범위가 올바르지 않습니다.")
+    return LunarInputDate(y, m, d)
+
+
 def parse_time_or_unknown(s: Optional[str]) -> Optional[time]:
     if not s or s.lower() in {"unknown", "none", "null", "미상", "모름", "시간모름"}:
         return None
@@ -214,6 +239,159 @@ def parse_time_or_unknown(s: Optional[str]) -> Optional[time]:
         return datetime.strptime(s, "%H:%M").time()
     except ValueError as exc:
         raise ManseError("time은 HH:mm 형식이어야 합니다. 시간 미상은 unknown을 사용하세요.") from exc
+
+
+def normalize_lunar_leap_arg(value: Any) -> str:
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    raw = "auto" if value is None else str(value).strip().lower()
+    aliases = {
+        "auto": "auto",
+        "unknown": "auto",
+        "true": "true",
+        "1": "true",
+        "yes": "true",
+        "y": "true",
+        "leap": "true",
+        "윤": "true",
+        "윤달": "true",
+        "false": "false",
+        "0": "false",
+        "no": "false",
+        "n": "false",
+        "regular": "false",
+        "평": "false",
+        "평달": "false",
+    }
+    if raw not in aliases:
+        raise ManseError("lunar_leap은 auto, true, false 중 하나여야 합니다.")
+    return aliases[raw]
+
+
+def lunar_cache_key(lunar_date: LunarInputDate, leap: bool) -> str:
+    return f"{lunar_date.isoformat()}:{'leap' if leap else 'regular'}"
+
+
+def _lunar_entry_solar_date(entry: Any) -> Optional[str]:
+    if isinstance(entry, str):
+        return entry
+    if isinstance(entry, dict):
+        raw = entry.get("solar_date") or entry.get("solarDate") or entry.get("date")
+        return str(raw) if raw else None
+    return None
+
+
+def load_lunar_conversion_year(cache_dir: Path, lunar_year: int) -> Optional[Dict[str, Any]]:
+    path = cache_dir / "lunar_to_solar_by_year" / f"{lunar_year}.json"
+    if not path.exists():
+        return None
+    obj = load_json_file(path, {})
+    if isinstance(obj, dict) and "entries" not in obj:
+        obj = {"meta": {}, "entries": obj}
+    if not isinstance(obj, dict):
+        return {"meta": {}, "entries": {}}
+    obj.setdefault("meta", {})
+    obj.setdefault("entries", {})
+    return obj
+
+
+def resolve_lunar_to_solar(lunar_date: LunarInputDate, lunar_leap: Any, cache_dir: Path) -> Tuple[Optional[Dict[str, Any]], Optional[Dict[str, Any]]]:
+    """Resolve a Korean lunar date to a solar date from the bundled offline cache.
+
+    Returns (conversion, error). The error object is already shaped for JSON output.
+    """
+    leap_mode = normalize_lunar_leap_arg(lunar_leap)
+    if not (1 <= lunar_date.month <= 12 and 1 <= lunar_date.day <= 30):
+        return None, {
+            "status": "invalid_lunar_date",
+            "reason": "invalid_lunar_date",
+            "message": f"음력 날짜 범위가 올바르지 않습니다: {lunar_date.isoformat()}",
+            "user_action_hint": "check_lunar_month_day",
+        }
+
+    cache_obj = load_lunar_conversion_year(cache_dir, lunar_date.year)
+    if cache_obj is None:
+        return None, {
+            "status": "lunar_conversion_missing",
+            "reason": "lunar_conversion_missing",
+            "message": f"{lunar_date.year}년 음력→양력 변환 cache가 없습니다.",
+            "user_action_hint": "run_build_kasi_cache_include_lunar_conversion",
+        }
+    entries = cache_obj.get("entries") or {}
+    if not isinstance(entries, dict):
+        entries = {}
+
+    candidates: List[Tuple[bool, Any]] = []
+    if leap_mode in {"auto", "false"}:
+        regular = entries.get(lunar_cache_key(lunar_date, False))
+        if regular is not None:
+            candidates.append((False, regular))
+    if leap_mode in {"auto", "true"}:
+        leap = entries.get(lunar_cache_key(lunar_date, True))
+        if leap is not None:
+            candidates.append((True, leap))
+
+    if leap_mode == "auto" and len(candidates) > 1:
+        return None, {
+            "status": "ambiguous_lunar_date",
+            "reason": "ambiguous_lunar_date",
+            "message": f"{lunar_date.isoformat()} 음력 날짜는 평달/윤달 후보가 모두 있습니다. --lunar-leap true 또는 false를 지정하세요.",
+            "user_action_hint": "set_lunar_leap_true_or_false",
+        }
+    if not candidates:
+        return None, {
+            "status": "invalid_lunar_date",
+            "reason": "invalid_lunar_date",
+            "message": f"음력 {lunar_date.isoformat()} ({'윤달' if leap_mode == 'true' else '평달' if leap_mode == 'false' else 'auto'})을 변환 cache에서 찾지 못했습니다.",
+            "user_action_hint": "check_lunar_date_and_leap_month",
+        }
+
+    selected_leap, selected_entry = candidates[0]
+    solar_raw = _lunar_entry_solar_date(selected_entry)
+    if not solar_raw:
+        return None, {
+            "status": "lunar_conversion_missing",
+            "reason": "lunar_conversion_missing",
+            "message": f"음력 {lunar_date.isoformat()} cache entry에 solar_date가 없습니다.",
+            "user_action_hint": "regenerate_lunar_conversion_cache",
+        }
+    try:
+        solar_date = parse_date(solar_raw)
+    except ManseError:
+        return None, {
+            "status": "lunar_conversion_missing",
+            "reason": "lunar_conversion_missing",
+            "message": f"음력 {lunar_date.isoformat()} cache entry의 solar_date 형식이 올바르지 않습니다.",
+            "user_action_hint": "regenerate_lunar_conversion_cache",
+        }
+
+    conversion = {
+        "input_calendar": "lunar",
+        "input_lunar_date": lunar_date.isoformat(),
+        "input_lunar_leap": selected_leap,
+        "requested_lunar_leap": leap_mode,
+        "converted_solar_date": solar_date.isoformat(),
+        "conversion_source": cache_obj.get("meta", {}).get("source", "offline_lunar_to_solar_cache"),
+        "cache_key": lunar_cache_key(lunar_date, selected_leap),
+    }
+    return conversion, None
+
+
+def make_error_result(
+    status: str,
+    reason: str,
+    message: str,
+    input_data: Dict[str, Any],
+    user_action_hint: str,
+) -> Dict[str, Any]:
+    return {
+        "status": status,
+        "version": PROFILE_VERSION,
+        "profile": {"name": PROFILE_NAME, "version": PROFILE_VERSION},
+        "message": message,
+        "error": {"reason": reason, "message": message, "user_action_hint": user_action_hint},
+        "input": input_data,
+    }
 
 
 def gregorian_jdn(y: int, m: int, d: int) -> int:
@@ -265,7 +443,7 @@ def request_kasi_json_or_xml(path: str, params: Dict[str, Any], service_key: str
     # '%'가 있으면 이미 인코딩된 것으로 보고 그대로 붙인다.
     key_part = service_key if "%" in service_key else urllib.parse.quote(service_key, safe="")
     url = f"{base_url}?ServiceKey={key_part}&{query}"
-    req = urllib.request.Request(url, headers={"User-Agent": "korean-manse-calculator/0.7.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": f"korean-manse-calculator/{PROFILE_VERSION}"})
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         raw = resp.read().decode("utf-8", errors="replace").strip()
     if not raw:
@@ -316,7 +494,7 @@ def canonical_solar_term_name(term: Dict[str, Any]) -> str:
     """Return the canonical solar-term name, preferring sunLongitude over label.
 
     KASI/distbe data has had rare label/time defects. For 24절기, the solar longitude is the
-    mathematically identifying value, so v0.7 uses it as the authoritative fallback.
+    mathematically identifying value, so v0.8 uses it as the authoritative fallback.
     """
     lon = term.get("sunLongitude", term.get("sun_longitude"))
     if lon is not None and lon != "":
@@ -560,7 +738,7 @@ def apply_default_seoul_longitude_correction(time_norm: Dict[str, Any]) -> Dict[
 
     Input birth time is treated as official Korean clock time at birth. First zoneinfo converts
     legal time to fixed KST(+09:00), handling historical Korean DST and UTC+08:30 periods.
-    Then v0.7.0 applies Seoul's fixed longitude correction of -32 minutes.
+    Then v0.8.0 applies Seoul's fixed longitude correction of -32 minutes.
     This is not apparent/true solar time; equation of time is intentionally not applied.
     """
     base_iso = time_norm.get("basis_time_kst")
@@ -605,7 +783,7 @@ def _parse_day_cache_value(val: Any, key: str) -> Optional[Tuple[GanZhi, Dict[st
 
 def get_day_ganzhi_from_cache(day: date, cache_path: Path) -> Optional[Tuple[GanZhi, Dict[str, Any]]]:
     key = day.isoformat()
-    # Fast path: v0.7.0 stores imported ilju data by year to avoid loading a multi-MB JSON on every call.
+    # Fast path: v0.8.0 stores imported ilju data by year to avoid loading a multi-MB JSON on every call.
     year_path = cache_path.parent / "day_ganzhi_by_year" / f"{day.year}.json"
     if year_path.exists():
         year_cache = load_json_file(year_path, {})
@@ -829,31 +1007,63 @@ def collect_terms_for_context(calc_year: int, cache: Dict[str, Any], cache_path:
 
 
 def calculate_manse(
-    birth_date: date,
+    birth_date: Any,
     birth_time: Optional[time],
     gender: Optional[str] = None,
     calendar: str = "solar",
+    lunar_leap: Any = "auto",
     spcde_service_key: Optional[str] = None,
     lrsr_service_key: Optional[str] = None,
     cache_dir: Optional[Path] = None,
 ) -> Dict[str, Any]:
-    if birth_date.year < 1950 or birth_date.year > 2030:
-        return {
-            "status": "error",
-            "version": PROFILE_VERSION,
-            "profile": {"name": PROFILE_NAME, "version": PROFILE_VERSION},
-            "error": {"reason": "year_out_of_range", "message": f"Year {birth_date.year} out of supported range 1950-2030", "user_action_hint": "out_of_range_no_action"},
-            "input": {"calendar": calendar, "date": birth_date.isoformat(), "time": birth_time.isoformat() if birth_time else "unknown", "gender": gender},
-        }
-    if calendar != "solar":
-        return {
-            "status": "unsupported_calendar",
-            "version": PROFILE_VERSION,
-            "profile": {"name": PROFILE_NAME, "version": PROFILE_VERSION},
-            "message": "v0.7.0은 양력 생년월일만 지원합니다. 음력/윤달 변환은 v1.x 이후 지원 예정입니다.",
-            "input": {"calendar": calendar, "date": birth_date.isoformat(), "time": birth_time.isoformat() if birth_time else "unknown", "gender": gender},
-        }
     cache_dir = cache_dir or package_root() / "data"
+    calendar = str(calendar or "solar").strip().lower()
+    input_date = birth_date
+    input_data: Dict[str, Any] = {
+        "calendar": calendar,
+        "date": input_date.isoformat(),
+        "time": birth_time.strftime("%H:%M") if birth_time else "unknown",
+        "gender": gender or "unknown",
+    }
+    if calendar == "lunar":
+        input_data["lunar_leap"] = normalize_lunar_leap_arg(lunar_leap)
+    if calendar not in {"solar", "lunar"}:
+        return make_error_result(
+            "unsupported_calendar",
+            "unsupported_calendar",
+            f"지원하지 않는 calendar 값입니다: {calendar}. solar 또는 lunar를 사용하세요.",
+            input_data,
+            "use_calendar_solar_or_lunar",
+        )
+
+    lunar_conversion: Optional[Dict[str, Any]] = None
+    if calendar == "lunar":
+        if not isinstance(input_date, LunarInputDate):
+            input_date = parse_lunar_date(input_date.isoformat() if hasattr(input_date, "isoformat") else str(input_date))
+        lunar_conversion, lunar_error = resolve_lunar_to_solar(input_date, lunar_leap, cache_dir)
+        if lunar_error:
+            return make_error_result(
+                lunar_error["status"],
+                lunar_error["reason"],
+                lunar_error["message"],
+                input_data,
+                lunar_error["user_action_hint"],
+            )
+        assert lunar_conversion is not None
+        birth_date = parse_date(lunar_conversion["converted_solar_date"])
+        input_data["lunar_leap"] = bool(lunar_conversion["input_lunar_leap"])
+    elif not isinstance(birth_date, date):
+        birth_date = parse_date(birth_date.isoformat() if hasattr(birth_date, "isoformat") else str(birth_date))
+
+    if birth_date.year < 1950 or birth_date.year > 2030:
+        return make_error_result(
+            "error",
+            "year_out_of_range",
+            f"Year {birth_date.year} out of supported range 1950-2030",
+            input_data,
+            "out_of_range_no_action",
+        )
+
     solar_terms_cache_path = cache_dir / "solar_terms_cache.json"
     day_cache_path = cache_dir / "day_ganzhi_cache.json"
     cache = load_solar_terms_cache(solar_terms_cache_path)
@@ -896,8 +1106,41 @@ def calculate_manse(
     day_info = dict(day_info)
     day_info["policy"] = "input_solar_date_preserved"
     day_info["input_solar_date"] = birth_date.isoformat()
+    if lunar_conversion:
+        day_info["input_lunar_date"] = input_date.isoformat()
+        day_info["input_lunar_leap"] = lunar_conversion["input_lunar_leap"]
+        day_info["lunar_conversion_cache_key"] = lunar_conversion["cache_key"]
     day_info["time_corrected_date_not_used_for_day_pillar"] = calc_date.isoformat()
     hour_detail = determine_hour_pillar(calc_dt, day_gz)
+
+    calendar_data: Dict[str, Any] = {
+        "input_calendar": calendar,
+        "solar_date_for_day_pillar": birth_date.isoformat(),
+        "time_corrected_date_for_year_month_and_hour": calc_date.isoformat(),
+        "day_pillar_policy": "input_solar_date_preserved_even_if_corrected_time_crosses_midnight",
+        "day_ganzhi_source": day_info,
+    }
+    if lunar_conversion:
+        calendar_data.update({
+            "input_lunar_date": lunar_conversion["input_lunar_date"],
+            "input_lunar_leap": lunar_conversion["input_lunar_leap"],
+            "requested_lunar_leap": lunar_conversion["requested_lunar_leap"],
+            "converted_solar_date": lunar_conversion["converted_solar_date"],
+            "conversion_source": lunar_conversion["conversion_source"],
+            "conversion_cache_key": lunar_conversion["cache_key"],
+        })
+    else:
+        calendar_data["input_solar_date"] = input_date.isoformat()
+
+    result_input: Dict[str, Any] = {
+        "calendar": calendar,
+        "date": input_date.isoformat(),
+        "time": birth_time.strftime("%H:%M") if birth_time else "unknown",
+        "gender": gender or "unknown",
+        "birthplace": {"input_collected": False, "default_used": DEFAULT_BIRTHPLACE},
+    }
+    if lunar_conversion:
+        result_input["lunar_leap"] = bool(lunar_conversion["input_lunar_leap"])
 
     result: Dict[str, Any] = {
         "status": "ok",
@@ -907,13 +1150,7 @@ def calculate_manse(
             "version": PROFILE_VERSION,
             "purpose": "manse_calculation_only_for_saju_agent",
         },
-        "input": {
-            "calendar": "solar",
-            "date": birth_date.isoformat(),
-            "time": birth_time.strftime("%H:%M") if birth_time else "unknown",
-            "gender": gender or "unknown",
-            "birthplace": {"input_collected": False, "default_used": DEFAULT_BIRTHPLACE},
-        },
+        "input": result_input,
         "policies": {
             "country_scope": "KR_only",
             "timezone": "Asia/Seoul legal time normalized to fixed KST(+09:00)",
@@ -923,7 +1160,7 @@ def calculate_manse(
             "apparent_solar_time": False,
             "true_solar_time": False,
             "overseas_birth": False,
-            "lunar_calendar": "unsupported_in_v0.7",
+            "lunar_calendar": "supported_by_offline_lunar_to_solar_cache_v0.8",
             "dst": "auto_by_zoneinfo_Asia/Seoul before Seoul longitude correction",
             "year_boundary": "ipchun_exact_kst",
             "month_boundary": "12_solar_term_boundaries_exact_kst",
@@ -933,12 +1170,7 @@ def calculate_manse(
             "llm_calculation": "forbidden; use engine result only",
         },
         "normalized_time": norm,
-        "calendar_data": {
-            "solar_date_for_day_pillar": birth_date.isoformat(),
-            "time_corrected_date_for_year_month_and_hour": calc_date.isoformat(),
-            "day_pillar_policy": "input_solar_date_preserved_even_if_corrected_time_crosses_midnight",
-            "day_ganzhi_source": day_info,
-        },
+        "calendar_data": calendar_data,
         "solar_terms": {
             "sources_by_year": term_sources,
             "year_boundary_ipchun": year_detail.get("ipchun"),
@@ -1023,11 +1255,12 @@ def resolve_api_keys(args: argparse.Namespace) -> Tuple[Optional[str], Optional[
 
 
 def main(argv: Optional[List[str]] = None) -> int:
-    parser = argparse.ArgumentParser(description="사주/Four Pillars 에이전트용 만세력 계산 스킬 v0.7.0")
-    parser.add_argument("--date", required=True, help="양력 생년월일 YYYY-MM-DD")
+    parser = argparse.ArgumentParser(description="사주/Four Pillars 에이전트용 만세력 계산 스킬 v0.8.0")
+    parser.add_argument("--date", required=True, help="생년월일 YYYY-MM-DD. --calendar lunar이면 음력 날짜로 해석")
     parser.add_argument("--time", default="unknown", help="출생시간 HH:mm 또는 unknown")
-    parser.add_argument("--gender", default="unknown", choices=["male", "female", "unknown", "남", "여"], help="성별. v0.7.0의 4기둥 계산에는 직접 사용하지 않지만 에이전트 전달용으로 보존")
-    parser.add_argument("--calendar", default="solar", choices=["solar", "lunar"], help="v0.7.0은 solar만 지원")
+    parser.add_argument("--gender", default="unknown", choices=["male", "female", "unknown", "남", "여"], help="성별. 4기둥 계산에는 직접 사용하지 않지만 에이전트 전달용으로 보존")
+    parser.add_argument("--calendar", default="solar", choices=["solar", "lunar"], help="입력 달력: solar 또는 lunar")
+    parser.add_argument("--lunar-leap", default="auto", choices=["auto", "true", "false"], help="--calendar lunar일 때 윤달 여부. auto는 단일 후보만 자동 선택")
     parser.add_argument("--format", default="json", choices=["json", "md"], help="출력 형식")
     parser.add_argument("--cache-dir", default=None, help="캐시 디렉터리. 기본값은 패키지 data/")
     parser.add_argument("--api-key", default=None, help="공통 KASI 서비스키 fallback. 없으면 KASI_SERVICE_KEY 환경변수 사용")
@@ -1036,7 +1269,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     args = parser.parse_args(argv)
 
     try:
-        bdate = parse_date(args.date)
+        bdate = parse_lunar_date(args.date) if args.calendar == "lunar" else parse_date(args.date)
         btime = parse_time_or_unknown(args.time)
         gender = {"남": "male", "여": "female"}.get(args.gender, args.gender)
         spcde_key, lrsr_key = resolve_api_keys(args)
@@ -1046,6 +1279,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             btime,
             gender=gender,
             calendar=args.calendar,
+            lunar_leap=args.lunar_leap,
             spcde_service_key=spcde_key,
             lrsr_service_key=lrsr_key,
             cache_dir=cache_dir,

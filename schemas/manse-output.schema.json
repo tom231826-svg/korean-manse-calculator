@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://sinjeomunni.app/schemas/manse-output-v0.7.schema.json",
-  "title": "Korean Manse Calculator 만세력 계산 출력 스키마 v0.7",
+  "$id": "https://github.com/tom231826-svg/korean-manse-calculator/schemas/manse-output-v0.8.schema.json",
+  "title": "Korean Manse Calculator 만세력 계산 출력 스키마 v0.8",
   "description": "사주 에이전트가 받는 만세력 계산 전용 JSON. 스킬은 계산만 하고 해석은 본체가 담당한다.",
   "type": "object",
   "required": [
@@ -15,13 +15,16 @@
       "enum": [
         "ok",
         "unsupported_calendar",
+        "lunar_conversion_missing",
+        "ambiguous_lunar_date",
+        "invalid_lunar_date",
         "missing_solar_terms_cache",
         "error"
       ]
     },
     "version": {
       "type": "string",
-      "const": "0.7.0"
+      "const": "0.8.0"
     },
     "profile": {
       "type": "object",
@@ -32,11 +35,11 @@
       "properties": {
         "name": {
           "type": "string",
-          "const": "seoul_corrected_manse_v0.7"
+          "const": "seoul_corrected_manse_v0.8"
         },
         "version": {
           "type": "string",
-          "const": "0.7.0"
+          "const": "0.8.0"
         },
         "purpose": {
           "type": "string"
@@ -49,11 +52,25 @@
       "properties": {
         "calendar": {
           "type": "string",
-          "const": "solar"
+          "description": "Successful results use solar or lunar. Error results may preserve an unsupported input value."
+        },
+        "lunar_leap": {
+          "type": [
+            "boolean",
+            "string"
+          ],
+          "enum": [
+            true,
+            false,
+            "auto",
+            "true",
+            "false"
+          ]
         },
         "date": {
           "type": "string",
-          "format": "date"
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+          "description": "Solar or lunar logical date. Lunar dates can contain month/day combinations that are not valid Gregorian dates."
         },
         "time": {
           "type": "string"
@@ -209,6 +226,39 @@
         "solar_date_for_day_pillar": {
           "type": "string",
           "format": "date"
+        },
+        "input_calendar": {
+          "type": "string",
+          "enum": [
+            "solar",
+            "lunar"
+          ]
+        },
+        "input_solar_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "input_lunar_date": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "input_lunar_leap": {
+          "type": "boolean"
+        },
+        "requested_lunar_leap": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "true",
+            "false"
+          ]
+        },
+        "converted_solar_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "conversion_source": {
+          "type": "string"
         },
         "time_corrected_date_for_year_month_and_hour": {
           "type": "string",

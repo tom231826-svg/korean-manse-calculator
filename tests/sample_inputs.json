@@ -9,7 +9,9 @@
   {"id":"T08_jeolgi","date":"2020-08-07","time":"10:00","gender":"unknown","purpose":"입추 전후 월주 경계 검증"},
   {"id":"T09_time_unknown","date":"2015-08-15","time":"unknown","gender":"female","purpose":"시간 미상: 시주 null, 00:00 가정 금지"},
   {"id":"T10_old_skyfield","date":"1965-07-07","time":"16:00","gender":"unknown","purpose":"1965년 skyfield 영역 검증"},
-  {"id":"T11_lunar_rejected","date":"2001-09-30","time":"12:00","gender":"male","calendar":"lunar","purpose":"음력 입력 거절"},
-  {"id":"T12_year_out_of_range_low","date":"1949-12-01","time":"10:00","gender":"unknown","purpose":"지원범위 하한 밖"},
-  {"id":"T13_year_out_of_range_high","date":"2031-01-01","time":"10:00","gender":"unknown","purpose":"지원범위 상한 밖"}
+  {"id":"T11_lunar_regular","date":"2001-08-14","time":"12:00","gender":"male","calendar":"lunar","lunar_leap":"false","purpose":"음력 평달 입력 변환"},
+  {"id":"T12_lunar_leap_true","date":"2020-04-01","time":"12:00","gender":"unknown","calendar":"lunar","lunar_leap":"true","purpose":"윤달 입력 변환"},
+  {"id":"T13_lunar_ambiguous","date":"2020-04-01","time":"12:00","gender":"unknown","calendar":"lunar","lunar_leap":"auto","purpose":"평달/윤달 후보 동시 존재"},
+  {"id":"T14_year_out_of_range_low","date":"1949-12-01","time":"10:00","gender":"unknown","purpose":"지원범위 하한 밖"},
+  {"id":"T15_year_out_of_range_high","date":"2031-01-01","time":"10:00","gender":"unknown","purpose":"지원범위 상한 밖"}
 ]

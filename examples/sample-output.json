@@ -1,9 +1,9 @@
 {
   "status": "ok",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "profile": {
-    "name": "seoul_corrected_manse_v0.7",
-    "version": "0.7.0",
+    "name": "seoul_corrected_manse_v0.8",
+    "version": "0.8.0",
     "purpose": "manse_calculation_only_for_saju_agent"
   },
   "input": {
@@ -35,7 +35,7 @@
     "apparent_solar_time": false,
     "true_solar_time": false,
     "overseas_birth": false,
-    "lunar_calendar": "unsupported_in_v0.7",
+    "lunar_calendar": "supported_by_offline_lunar_to_solar_cache_v0.8",
     "dst": "auto_by_zoneinfo_Asia/Seoul before Seoul longitude correction",
     "year_boundary": "ipchun_exact_kst",
     "month_boundary": "12_solar_term_boundaries_exact_kst",
@@ -73,6 +73,7 @@
     "total_adjustment_minutes": -32
   },
   "calendar_data": {
+    "input_calendar": "solar",
     "solar_date_for_day_pillar": "1990-01-01",
     "time_corrected_date_for_year_month_and_hour": "1990-01-01",
     "day_pillar_policy": "input_solar_date_preserved_even_if_corrected_time_crosses_midnight",
@@ -82,7 +83,8 @@
       "policy": "input_solar_date_preserved",
       "input_solar_date": "1990-01-01",
       "time_corrected_date_not_used_for_day_pillar": "1990-01-01"
-    }
+    },
+    "input_solar_date": "1990-01-01"
   },
   "solar_terms": {
     "sources_by_year": {

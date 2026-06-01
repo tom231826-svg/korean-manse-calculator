@@ -1,12 +1,12 @@
 {
   "schema_version": "1.0",
-  "name": "korean-manse-calculator-v0.7",
+  "name": "korean-manse-calculator-v0.8",
   "display_name": "Korean Manse Calculator",
-  "version": "0.7.0",
-  "description": "사주/Four Pillars 에이전트용 계산 전용 만세력 스킬. 양력 생년월일시를 국내/서울 기본값 기준으로 정규화하고, 1950~2030 24절기 데이터와 양력 일진 lookup으로 년주·월주·일주·시주를 산출한다. 대한민국 법정시/서머타임 자동 보정과 서울 경도 보정 -32분을 적용한다. 일주는 외부 기준 케이스 검증과 동일하게 입력 양력 일자의 일진을 그대로 사용하며, 자시여도 다음날로 넘기지 않는다.",
+  "version": "0.8.0",
+  "description": "사주/Four Pillars 에이전트용 계산 전용 만세력 스킬. 양력 또는 한국 음력 생년월일시를 국내/서울 기본값 기준으로 정규화하고, 음력은 오프라인 cache로 양력 변환한 뒤 1950~2030 24절기 데이터와 양력 일진 lookup으로 년주·월주·일주·시주를 산출한다. 대한민국 법정시/서머타임 자동 보정과 서울 경도 보정 -32분을 적용한다. 일주는 외부 기준 케이스 검증과 동일하게 계산 기준 양력 일자의 일진을 그대로 사용하며, 자시여도 다음날로 넘기지 않는다.",
   "author": "korean-manse-calculator contributors",
   "license": "MIT",
-  "calculation_profile": "seoul_corrected_manse_v0.7",
+  "calculation_profile": "seoul_corrected_manse_v0.8",
   "skill_kind": "python_engine_with_reference_lookup_fallback",
   "entrypoint": "scripts/calculate_manse.py",
   "runtime_dependencies": [
@@ -14,13 +14,15 @@
   ],
   "optional_build_dependencies": [
     "skyfield",
-    "NASA JPL DE421 ephemeris"
+    "NASA JPL DE421 ephemeris",
+    "korean-lunar-calendar"
   ],
   "inputs": {
-    "date": "YYYY-MM-DD solar only",
+    "date": "YYYY-MM-DD solar date or lunar date when calendar=lunar",
     "time": "HH:mm or unknown",
     "gender": "male|female|unknown",
-    "calendar": "solar only"
+    "calendar": "solar|lunar",
+    "lunar_leap": "auto|true|false"
   },
   "files": {
     "skill_md": "SKILL.md",
@@ -32,12 +34,13 @@
     "cache_validator": "scripts/validate_caches.py",
     "data_day_ganzhi_pattern": "data/day_ganzhi_by_year/{YYYY}.json",
     "data_solar_terms": "data/solar_terms_cache.json",
+    "data_lunar_to_solar_pattern": "data/lunar_to_solar_by_year/{YYYY}.json",
     "references_ilju_pattern": "references/ilju/{YYYY}.json",
     "references_jeolgi_pattern": "references/jeolgi/{YYYY}.json",
     "conversion": "references/conversion.json"
   },
   "policies": {
-    "calendar": "solar_only",
+    "calendar": "solar_or_lunar",
     "birthplace_input": false,
     "default_birthplace": "Seoul, 126.9780E",
     "dst": "auto_by_Asia_Seoul_zoneinfo",
@@ -51,7 +54,7 @@
     "zi_hour_range": "23:00-00:59",
     "zi_hour_method": "reference-case midnight boundary",
     "zi_hour_changes_day_pillar": false,
-    "day_pillar_policy": "input_solar_date_preserved",
+    "day_pillar_policy": "input_solar_date_or_converted_solar_date_preserved",
     "year_boundary": "ipchun_exact_corrected_time",
     "month_boundary": "12_solar_term_boundaries_exact_corrected_time"
   },
@@ -82,6 +85,14 @@
         "references/jeolgi/{YYYY}.json",
         "KASI API if service key exists"
       ]
+    },
+    "lunar_to_solar": {
+      "coverage": "solar dates 1950-01-01 ~ 2030-12-31 reverse-indexed by lunar date and leap-month flag",
+      "preferred_regeneration": "KASI LrsrCldInfoService/getLunCalInfo",
+      "bundled_source": "korean_lunar_calendar_py_0.3.1_kari",
+      "runtime_priority": [
+        "data/lunar_to_solar_by_year/{YYYY}.json"
+      ]
     }
   },
   "data_corrections": [
@@ -93,14 +104,25 @@
     "2000 입춘/우수: v0.7 통합 검증 중 우수 누락/입춘 날짜 오염 발견 → 보정"
   ],
   "limitations": [
-    "v0.7은 양력 생년월일만 지원한다.",
-    "음력/윤달 변환은 v1.x backlog다.",
+    "음력/윤달 변환은 런타임 API 호출 없이 번들 cache만 사용한다.",
+    "lunar_leap=auto에서 평달/윤달 후보가 모두 있으면 ambiguous_lunar_date를 반환한다.",
     "출생지는 입력받지 않고 서울 기준 -32분을 고정 적용한다.",
     "진태양시/시태양시/균시차는 적용하지 않는다.",
     "해외 출생은 지원하지 않는다.",
     "지원 범위는 1950~2030이다."
   ],
   "changelog": [
+    {
+      "version": "0.8.0",
+      "date": "2026-06-01",
+      "changes": [
+        "calendar=lunar 및 lunar_leap=auto|true|false 입력 지원",
+        "data/lunar_to_solar_by_year 음력→양력 변환 cache 추가",
+        "KASI LrsrCldInfoService 기반 음력 변환 cache 재생성 경로 추가",
+        "평달/윤달 ambiguous/invalid/missing cache 구조화 에러 추가",
+        "기존 v0.7 양력 계산 결과 보존"
+      ]
+    },
     {
       "version": "0.7.0",
       "date": "2026-05-06",

@@ -122,8 +122,85 @@ def validate_solar_cache(data_dir: Path, start: int, end: int) -> Dict[str, Any]
     return {'years_present':present,'entry_count':entries,'problem_count':len(problems),'problems':problems[:120]}
 
 
+def _lunar_entry_solar_date(entry: Any) -> str:
+    if isinstance(entry, str):
+        return entry
+    if isinstance(entry, dict):
+        return str(entry.get('solar_date') or entry.get('solarDate') or '')
+    return ''
+
+
+def _parse_lunar_key_date(value: str):
+    parts=value.split('-')
+    if len(parts) != 3:
+        raise ValueError('invalid lunar date')
+    y,m,d=(int(part) for part in parts)
+    if y < 1 or not (1 <= m <= 12) or not (1 <= d <= 30):
+        raise ValueError('invalid lunar date range')
+    return y,m,d
+
+
+def validate_lunar_conversion(data_dir: Path, start: int, end: int) -> Dict[str, Any]:
+    root=data_dir/'lunar_to_solar_by_year'
+    if not root.exists():
+        return {'years_present':0,'entry_count':0,'problem_count':1,'problems':['data/lunar_to_solar_by_year missing']}
+    problems=[]; years_present=0; entries=0; seen_solar={}
+    for path in sorted(root.glob('*.json')):
+        if path.name == '_meta.json':
+            continue
+        try:
+            lunar_year=int(path.stem)
+        except ValueError:
+            problems.append(f'lunar conversion: invalid file name {path.name}')
+            continue
+        obj=load(path)
+        mapping=obj.get('entries', obj) if isinstance(obj,dict) else {}
+        if not isinstance(mapping,dict):
+            problems.append(f'lunar conversion {path.name}: entries is not object')
+            continue
+        years_present += 1
+        for key, value in mapping.items():
+            entries += 1
+            if not (isinstance(key,str) and (key.endswith(':regular') or key.endswith(':leap'))):
+                problems.append(f'lunar conversion {path.name}: invalid key {key}')
+                continue
+            lunar_date=key.split(':',1)[0]
+            try:
+                lunar_y, _lunar_m, _lunar_d=_parse_lunar_key_date(lunar_date)
+            except ValueError:
+                problems.append(f'lunar conversion {path.name}: invalid lunar date key {key}')
+                continue
+            if lunar_y != lunar_year:
+                problems.append(f'lunar conversion {path.name}: key year mismatch {key}')
+            solar_raw=_lunar_entry_solar_date(value)
+            try:
+                sd=date.fromisoformat(solar_raw)
+            except ValueError:
+                problems.append(f'lunar conversion {path.name}: invalid solar date for {key}')
+                continue
+            if start <= sd.year <= end:
+                previous=seen_solar.get(sd.isoformat())
+                if previous:
+                    problems.append(f'lunar conversion: solar date duplicate {sd.isoformat()} in {previous} and {key}')
+                else:
+                    seen_solar[sd.isoformat()]=key
+    expected=[d.isoformat() for d in daterange(date(start,1,1), date(end,12,31))]
+    missing=[d for d in expected if d not in seen_solar]
+    if missing:
+        problems.append(f'lunar conversion: missing solar dates {missing[:10]}')
+    if len(seen_solar) != len(expected):
+        problems.append(f'lunar conversion: expected {len(expected)} indexed solar dates, got {len(seen_solar)}')
+    return {
+        'years_present':years_present,
+        'entry_count':entries,
+        'solar_dates_indexed':len(seen_solar),
+        'problem_count':len(problems),
+        'problems':problems[:120],
+    }
+
+
 def main():
-    p=argparse.ArgumentParser(description='Korean Manse Calculator 만세력 v0.7 캐시 검증')
+    p=argparse.ArgumentParser(description='Korean Manse Calculator 만세력 v0.8 캐시 검증')
     p.add_argument('--root-dir', default=str(package_root()))
     p.add_argument('--data-dir', default=None)
     p.add_argument('--start-year', type=int, default=1950)
@@ -135,10 +212,12 @@ def main():
         'day_ganzhi': validate_day(data_dir,a.start_year,a.end_year),
         'references_jeolgi': validate_references(root,a.start_year,a.end_year),
         'solar_terms_cache': validate_solar_cache(data_dir,a.start_year,a.end_year),
+        'lunar_conversion': validate_lunar_conversion(data_dir,a.start_year,a.end_year),
     }
     print(json.dumps(result,ensure_ascii=False,indent=2))
     ok=(result['day_ganzhi']['missing_count']==0 and result['day_ganzhi']['mismatch_count']==0 and
-        result['references_jeolgi']['problem_count']==0 and result['solar_terms_cache']['problem_count']==0)
+        result['references_jeolgi']['problem_count']==0 and result['solar_terms_cache']['problem_count']==0 and
+        result['lunar_conversion']['problem_count']==0)
     return 0 if ok else 1
 
 if __name__=='__main__':

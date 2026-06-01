@@ -1,4 +1,4 @@
-# Test Plan v0.7
+# Test Plan v0.8
 
 ## 필수 검증 명령
 
@@ -16,6 +16,7 @@ bash tests/smoke_test.sh
 - 절기 cache: 1,944 entries 존재.
 - 절기: `name`과 `sunLongitude` 불일치 없음. 불일치 시 황경 fallback으로 정규화.
 - source: `kasi` 또는 `skyfield_de421` 계열이어야 함.
+- 음력 변환 cache: 1950-01-01~2030-12-31 양력 날짜 29,585일이 음력 key로 역인덱싱되어야 함.
 
 ## Ground truth 케이스
 
@@ -44,5 +45,8 @@ bash tests/smoke_test.sh
 
 ## 에러 케이스
 
-- 음력 입력: `unsupported_calendar`
+- `calendar`가 `solar|lunar` 외 값: `unsupported_calendar`
+- 평달/윤달 후보가 모두 있는데 `lunar_leap=auto`: `ambiguous_lunar_date`
+- cache에 없는 음력 날짜: `invalid_lunar_date`
+- 음력 변환 cache 파일 누락: `lunar_conversion_missing`
 - 1949 이하 또는 2031 이상: `year_out_of_range`

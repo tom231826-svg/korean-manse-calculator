@@ -1,11 +1,11 @@
 {
-  "version": "0.7.0",
-  "description": "v0.7 smoke/ground-truth expected outputs",
+  "version": "0.8.0",
+  "description": "v0.8 smoke/ground-truth expected outputs",
   "cases": [
     {
       "id": "T01_reference_A",
       "status": "ok",
-      "version": "0.7.0",
+      "version": "0.8.0",
       "returncode": 0,
       "summary": "己巳년 丙子월 丙寅일 己亥시",
       "pillars": {
@@ -23,7 +23,7 @@
     {
       "id": "T02_reference_B",
       "status": "ok",
-      "version": "0.7.0",
+      "version": "0.8.0",
       "returncode": 0,
       "summary": "己巳년 丙子월 丁卯일 庚子시",
       "pillars": {
@@ -41,7 +41,7 @@
     {
       "id": "T03_junseok",
       "status": "ok",
-      "version": "0.7.0",
+      "version": "0.8.0",
       "returncode": 0,
       "summary": "辛巳년 己亥월 丙戌일 甲午시",
       "pillars": {
@@ -59,7 +59,7 @@
     {
       "id": "T04_skyfield",
       "status": "ok",
-      "version": "0.7.0",
+      "version": "0.8.0",
       "returncode": 0,
       "summary": "乙亥년 辛巳월 丙午일 乙未시",
       "pillars": {
@@ -77,7 +77,7 @@
     {
       "id": "T05_ipchun_before",
       "status": "ok",
-      "version": "0.7.0",
+      "version": "0.8.0",
       "returncode": 0,
       "summary": "癸卯년 乙丑월 戊戌일 庚申시",
       "pillars": {
@@ -95,7 +95,7 @@
     {
       "id": "T06_ipchun_after",
       "status": "ok",
-      "version": "0.7.0",
+      "version": "0.8.0",
       "returncode": 0,
       "summary": "甲辰년 丙寅월 戊戌일 辛酉시",
       "pillars": {
@@ -113,7 +113,7 @@
     {
       "id": "T07_year_boundary",
       "status": "ok",
-      "version": "0.7.0",
+      "version": "0.8.0",
       "returncode": 0,
       "summary": "己丑년 丙子월 辛亥일 辛卯시",
       "pillars": {
@@ -131,7 +131,7 @@
     {
       "id": "T08_jeolgi",
       "status": "ok",
-      "version": "0.7.0",
+      "version": "0.8.0",
       "returncode": 0,
       "summary": "庚子년 癸未월 壬午일 乙巳시",
       "pillars": {
@@ -149,7 +149,7 @@
     {
       "id": "T09_time_unknown",
       "status": "ok",
-      "version": "0.7.0",
+      "version": "0.8.0",
       "returncode": 0,
       "summary": "乙未년 甲申월 癸亥일 시주 미상",
       "pillars": {
@@ -167,7 +167,7 @@
     {
       "id": "T10_old_skyfield",
       "status": "ok",
-      "version": "0.7.0",
+      "version": "0.8.0",
       "returncode": 0,
       "summary": "乙巳년 壬午월 壬戌일 戊申시",
       "pillars": {
@@ -183,17 +183,55 @@
       "month_jeolgi_time": "07:01"
     },
     {
-      "id": "T11_lunar_rejected",
-      "status": "unsupported_calendar",
-      "version": "0.7.0",
-      "returncode": 2,
-      "message": "v0.7.0은 양력 생년월일만 지원합니다. 음력/윤달 변환은 v1.x 이후 지원 예정입니다.",
-      "error": null
+      "id": "T11_lunar_regular",
+      "status": "ok",
+      "version": "0.8.0",
+      "returncode": 0,
+      "summary": "辛巳년 丁酉월 丙申일 甲午시",
+      "pillars": {
+        "year": "辛巳",
+        "month": "丁酉",
+        "day": "丙申",
+        "hour": "甲午"
+      },
+      "input_lunar_date": "2001-08-14",
+      "input_lunar_leap": false,
+      "converted_solar_date": "2001-09-30",
+      "day_pillar_date": "2001-09-30"
     },
     {
-      "id": "T12_year_out_of_range_low",
+      "id": "T12_lunar_leap_true",
+      "status": "ok",
+      "version": "0.8.0",
+      "returncode": 0,
+      "summary": "庚子년 辛巳월 丙寅일 甲午시",
+      "pillars": {
+        "year": "庚子",
+        "month": "辛巳",
+        "day": "丙寅",
+        "hour": "甲午"
+      },
+      "input_lunar_date": "2020-04-01",
+      "input_lunar_leap": true,
+      "converted_solar_date": "2020-05-23",
+      "day_pillar_date": "2020-05-23"
+    },
+    {
+      "id": "T13_lunar_ambiguous",
+      "status": "ambiguous_lunar_date",
+      "version": "0.8.0",
+      "returncode": 2,
+      "message": "2020-04-01 음력 날짜는 평달/윤달 후보가 모두 있습니다. --lunar-leap true 또는 false를 지정하세요.",
+      "error": {
+        "reason": "ambiguous_lunar_date",
+        "message": "2020-04-01 음력 날짜는 평달/윤달 후보가 모두 있습니다. --lunar-leap true 또는 false를 지정하세요.",
+        "user_action_hint": "set_lunar_leap_true_or_false"
+      }
+    },
+    {
+      "id": "T14_year_out_of_range_low",
       "status": "error",
-      "version": "0.7.0",
+      "version": "0.8.0",
       "returncode": 2,
       "message": null,
       "error": {
@@ -203,9 +241,9 @@
       }
     },
     {
-      "id": "T13_year_out_of_range_high",
+      "id": "T15_year_out_of_range_high",
       "status": "error",
-      "version": "0.7.0",
+      "version": "0.8.0",
       "returncode": 2,
       "message": null,
       "error": {

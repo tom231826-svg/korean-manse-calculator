@@ -1,4 +1,4 @@
-# KASI / Skyfield 데이터 소스 메모 v0.7
+# KASI / Skyfield 데이터 소스 메모 v0.8
 
 ## 사용 API
 
@@ -6,14 +6,14 @@
 
 - Service: `SpcdeInfoService/get24DivisionsInfo`
 - 용도: 24절기 날짜, `kst` 절입시각, `sunLongitude` 수집
-- v0.7 재현 정책상 KASI 직접 구간: 2000~2027
+- v0.8 재현 정책상 KASI 직접 구간: 2000~2027
 - 환경변수: `KASI_SPCDE_SERVICE_KEY` 또는 공통 `KASI_SERVICE_KEY`
 
 ### 음양력정보 API
 
 - Service: `LrsrCldInfoService/getLunCalInfo`
-- v0.7에서는 일진 live fallback 용도만 남겨둔다.
-- 음력/윤달 변환은 v1.x backlog.
+- 일진 live fallback 및 음력→양력 변환 cache 재생성에 사용한다.
+- runtime 계산은 API를 직접 호출하지 않고 `data/lunar_to_solar_by_year` cache를 사용한다.
 - 환경변수: `KASI_LRSR_SERVICE_KEY` 또는 공통 `KASI_SERVICE_KEY`
 
 ## 24절기 보완
@@ -44,4 +44,11 @@ KASI + skyfield로 재현 생성:
 ```bash
 KASI_SPCDE_SERVICE_KEY="<your-data-go-kr-service-key>" \
 python3 scripts/build_kasi_cache.py --start-year 1950 --end-year 2030 --skyfield-data-dir ./skyfield-data
+```
+
+음력 변환 cache 재생성:
+
+```bash
+KASI_LRSR_SERVICE_KEY="<your-data-go-kr-service-key>" \
+python3 scripts/build_kasi_cache.py --start-year 1950 --end-year 2030 --from-bundled-references --include-lunar-conversion
 ```

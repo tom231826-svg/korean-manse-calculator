@@ -1,14 +1,15 @@
 ---
-name: korean-manse-calculator-v0.7
-version: 0.7.0
+name: korean-manse-calculator-v0.8
+version: 0.8.0
 description: |
-  사주/Four Pillars 에이전트가 호출하는 계산 전용 만세력 스킬. 국내/서울 기본값 기준 양력 생년월일시를 받아
-  한국 표준시 변동·서머타임·서울 경도 보정 -32분을 적용하고, 1950~2030 24절기 lookup과 양력 일진 lookup으로
-  년주·월주·일주·시주를 산출한다. 일주는 외부 기준 케이스 검증과 동일하게 입력 양력 일자의 일진을 그대로 사용한다.
+  사주/Four Pillars 에이전트가 호출하는 계산 전용 만세력 스킬. 국내/서울 기본값 기준 양력 또는 한국 음력 생년월일시를 받아
+  음력은 먼저 양력으로 변환한 뒤 한국 표준시 변동·서머타임·서울 경도 보정 -32분을 적용하고,
+  1950~2030 24절기 lookup과 양력 일진 lookup으로 년주·월주·일주·시주를 산출한다.
+  일주는 외부 기준 케이스 검증과 동일하게 계산 기준 양력 일자의 일진을 그대로 사용한다.
   LLM은 직접 계산하지 않고 내부 계산 엔진 결과만 전달한다.
 ---
 
-# Korean Manse Calculator v0.7
+# Korean Manse Calculator v0.8
 
 ## 역할
 
@@ -16,11 +17,11 @@ description: |
 
 계산 결과의 표준 인터페이스는 `schemas/manse-output.schema.json`이다.
 
-## v0.7 고정 정책
+## v0.8 고정 정책
 
 ```yaml
-profile: seoul_corrected_manse_v0.7
-calendar: solar_only
+profile: seoul_corrected_manse_v0.8
+calendar: solar_or_korean_lunar_via_offline_cache
 country_scope: KR_only
 birthplace_input: false
 birthplace_assumption: Seoul
@@ -39,16 +40,15 @@ equation_of_time: false
 # 4기둥 결정 기준
 year_pillar_boundary: ipchun_exact_corrected_time
 month_pillar_boundary: 12_solar_term_exact_corrected_time
-day_pillar_basis: input_solar_date
+day_pillar_basis: input_solar_date_or_converted_solar_date
 zi_hour_method: reference_case_midnight_boundary
 zi_hour_range: "23:00-00:59"
 zi_hour_changes_day_pillar: false
 hour_pillar_basis: corrected_time_for_hour_branch + input_date_day_stem
 
-# 미지원
-lunar_calendar: unsupported_in_v0.7
-overseas_birth: unsupported_in_v0.7
-user_birthplace_input: unsupported_in_v0.7
+lunar_calendar: supported_by_offline_lunar_to_solar_cache_v0.8
+overseas_birth: unsupported
+user_birthplace_input: unsupported
 interpretation_inside_skill: forbidden
 ```
 
@@ -58,15 +58,16 @@ interpretation_inside_skill: forbidden
 
 ```yaml
 required:
-  date: "YYYY-MM-DD"          # 양력 생년월일
+  date: "YYYY-MM-DD"          # calendar=solar이면 양력, calendar=lunar이면 음력
 
 optional:
   time: "HH:MM" | "unknown"  # 출생시각. 모르면 unknown
   gender: "male" | "female" | "unknown"
-  calendar: "solar"           # v0.7은 solar만 지원
+  calendar: "solar" | "lunar"
+  lunar_leap: "auto" | "true" | "false"
 ```
 
-사용자가 음력·윤달을 입력하면 임의 변환하지 않고 양력 날짜를 요청한다. 해외 출생이나 출생지 입력도 v0.7에서는 받지 않는다.
+`calendar=lunar`이면 `date`는 음력 날짜로 해석한다. `lunar_leap=auto`에서 같은 음력일에 평달/윤달 후보가 모두 있으면 `ambiguous_lunar_date`를 반환한다. 해외 출생이나 출생지 입력은 받지 않는다.
 
 ## 계산 단계
 
@@ -74,10 +75,15 @@ optional:
 
 | 케이스 | 반환 |
 |---|---|
-| 음력 또는 윤달 입력 | `unsupported_calendar` |
+| `calendar`가 `solar|lunar` 외 값 | `unsupported_calendar` |
+| 음력 변환 cache 파일 누락 | `lunar_conversion_missing` |
+| `lunar_leap=auto`이고 평달/윤달 후보 모두 존재 | `ambiguous_lunar_date` |
+| 음력 날짜가 cache에서 찾을 수 없음 | `invalid_lunar_date` |
 | 출생연도 < 1950 또는 > 2030 | `error.reason = year_out_of_range` |
 | 출생시간 미상 | 시주는 `null`, 시간 보정은 적용하지 않음 |
 | 날짜 포맷 비정상 | `error` |
+
+음력 입력은 이 단계에서 양력으로 변환하고, 이후 계산 단계는 변환된 양력 날짜를 사용한다.
 
 ### Step 1 — 시간 보정
 
@@ -91,7 +97,7 @@ optional:
 
 ### Step 2 — 일주(日柱): 외부 기준 케이스 검증 자정경계 방식
 
-- 일주 결정 일자 = 사용자 입력 양력 일자.
+- 일주 결정 일자 = 양력 입력일 또는 음력에서 변환된 양력 일자.
 - 보정시각이 전날/다음날로 넘어가도 일주 날짜는 바꾸지 않는다.
 - 子시여도 다음날 일주로 넘기지 않는다.
 - `data/day_ganzhi_by_year/{YYYY}.json` 또는 `references/ilju/{YYYY}.json`의 입력일 lookup을 사용한다.
@@ -153,7 +159,7 @@ optional:
 - 시주 천간: Step 2의 입력 양력일 일간을 기준으로 오자둔 표를 적용한다.
 - 子시여도 일간을 다음날 일간으로 바꾸지 않는다.
 
-## 24절기 데이터 v0.7
+## 24절기 데이터 v0.8
 
 `references/jeolgi/{YYYY}.json` 1950~2030 총 81개 파일을 포함한다. 각 파일 구조:
 
@@ -228,11 +234,11 @@ python3 scripts/build_kasi_cache.py --start-year 1950 --end-year 2030 --skyfield
 
 - LLM이 직접 JDN, 월주, 시주를 암산하지 않는다.
 - 출생지를 사용자에게 묻지 않는다.
-- 서울 -32분 보정을 사용자별 지역 보정처럼 설명하지 않는다. v0.7은 서울 기본값 고정이다.
+- 서울 -32분 보정을 사용자별 지역 보정처럼 설명하지 않는다. v0.8은 서울 기본값 고정이다.
 - 진태양시/시태양시/균시차까지 적용했다고 말하지 않는다.
 - 子시라는 이유로 일주를 다음날로 넘기지 않는다.
 - 보정시각이 전날/다음날이 되었다는 이유로 일주를 바꾸지 않는다.
-- 음력/윤달 변환을 임의로 수행하지 않는다.
+- 음력/윤달 변환을 LLM이 임의로 수행하지 않는다. 반드시 `data/lunar_to_solar_by_year` cache 결과를 사용한다.
 
 ## 사주 에이전트 연동 규칙
 
