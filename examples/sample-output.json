@@ -1,0 +1,173 @@
+{
+  "status": "ok",
+  "version": "0.7.0",
+  "profile": {
+    "name": "seoul_corrected_manse_v0.7",
+    "version": "0.7.0",
+    "purpose": "manse_calculation_only_for_saju_agent"
+  },
+  "input": {
+    "calendar": "solar",
+    "date": "1990-01-01",
+    "time": "23:30",
+    "gender": "unknown",
+    "birthplace": {
+      "input_collected": false,
+      "default_used": {
+        "name": "서울특별시",
+        "latitude": 37.5665,
+        "longitude": 126.978,
+        "standard_meridian": 135.0
+      }
+    }
+  },
+  "policies": {
+    "country_scope": "KR_only",
+    "timezone": "Asia/Seoul legal time normalized to fixed KST(+09:00)",
+    "birthplace_input": false,
+    "default_birthplace": {
+      "name": "서울특별시",
+      "latitude": 37.5665,
+      "longitude": 126.978,
+      "standard_meridian": 135.0
+    },
+    "longitude_correction": "fixed Seoul correction -32 minutes",
+    "apparent_solar_time": false,
+    "true_solar_time": false,
+    "overseas_birth": false,
+    "lunar_calendar": "unsupported_in_v0.7",
+    "dst": "auto_by_zoneinfo_Asia/Seoul before Seoul longitude correction",
+    "year_boundary": "ipchun_exact_kst",
+    "month_boundary": "12_solar_term_boundaries_exact_kst",
+    "day_pillar_policy": "input_solar_date_preserved; corrected time never changes day pillar date; reference cases-compatible midnight boundary verified",
+    "day_boundary": "input_solar_date_preserved / reference cases midnight boundary",
+    "zi_hour": "23:00-00:59",
+    "llm_calculation": "forbidden; use engine result only"
+  },
+  "normalized_time": {
+    "legal_local_time": "1990-01-01T23:30:00+09:00",
+    "basis_time_kst": "1990-01-01T22:58:00+09:00",
+    "basis_date": "1990-01-01",
+    "offset_minutes_at_birth": 540,
+    "basis_adjustment_minutes": 0,
+    "dst_applied": false,
+    "timezone_source": "zoneinfo:Asia/Seoul -> fixed KST(+09:00)",
+    "warnings": [],
+    "standard_time_kst_before_longitude_correction": "1990-01-01T23:30:00+09:00",
+    "calculation_time": "1990-01-01T22:58:00+09:00",
+    "longitude_correction": {
+      "applied": true,
+      "type": "default_seoul_longitude_local_mean_time",
+      "birthplace_default": {
+        "name": "서울특별시",
+        "latitude": 37.5665,
+        "longitude": 126.978,
+        "standard_meridian": 135.0
+      },
+      "minutes": -32,
+      "exact_minutes_from_longitude": -32.088,
+      "apparent_or_true_solar_time": false,
+      "equation_of_time_applied": false,
+      "note": "출생지는 입력받지 않고 서울 기준 -32분 경도 보정을 고정 적용합니다."
+    },
+    "total_adjustment_minutes": -32
+  },
+  "calendar_data": {
+    "solar_date_for_day_pillar": "1990-01-01",
+    "time_corrected_date_for_year_month_and_hour": "1990-01-01",
+    "day_pillar_policy": "input_solar_date_preserved_even_if_corrected_time_crosses_midnight",
+    "day_ganzhi_source": {
+      "source": "generated_ilju_cache_formula_crosschecked",
+      "cache_key": "1990-01-01",
+      "policy": "input_solar_date_preserved",
+      "input_solar_date": "1990-01-01",
+      "time_corrected_date_not_used_for_day_pillar": "1990-01-01"
+    }
+  },
+  "solar_terms": {
+    "sources_by_year": {
+      "1989": "cache",
+      "1990": "cache",
+      "1991": "cache"
+    },
+    "year_boundary_ipchun": {
+      "name": "입춘",
+      "hanja": "立春",
+      "dateKind": "03",
+      "locdate": "19900204",
+      "date": "1990-02-04",
+      "kst": "1113",
+      "time": "11:13",
+      "sunLongitude": 315,
+      "datetime_kst": "1990-02-04T11:13:00+09:00",
+      "source": "skyfield_de421"
+    },
+    "month_boundary": {
+      "name": "대설",
+      "hanja": "大雪",
+      "dateKind": "03",
+      "locdate": "19891207",
+      "date": "1989-12-07",
+      "kst": "1220",
+      "time": "12:20",
+      "sunLongitude": 255,
+      "datetime_kst": "1989-12-07T12:20:00+09:00",
+      "source": "skyfield_de421",
+      "month_branch": "子",
+      "canonical_name": "대설"
+    },
+    "next_month_boundary": {
+      "name": "소한",
+      "hanja": "小寒",
+      "dateKind": "03",
+      "locdate": "19900105",
+      "date": "1990-01-05",
+      "kst": "2333",
+      "time": "23:33",
+      "sunLongitude": 285,
+      "datetime_kst": "1990-01-05T23:33:00+09:00",
+      "source": "skyfield_de421",
+      "month_branch": "丑",
+      "canonical_name": "소한"
+    }
+  },
+  "pillars": {
+    "year": {
+      "ganzhi": "己巳",
+      "ko": "기사",
+      "stem": "己",
+      "branch": "巳",
+      "basis": "ipchun_exact_kst",
+      "year_basis": 1989,
+      "birth_after_ipchun": false,
+      "ambiguous": false
+    },
+    "month": {
+      "ganzhi": "丙子",
+      "ko": "병자",
+      "stem": "丙",
+      "branch": "子",
+      "basis": "solar_term_exact_kst",
+      "year_stem_used": "己",
+      "ambiguous": false
+    },
+    "day": {
+      "ganzhi": "丙寅",
+      "ko": "병인",
+      "stem": "丙",
+      "branch": "寅",
+      "basis": "input_solar_date_preserved; KASI/cache preferred; not shifted by zi-hour or longitude correction"
+    },
+    "hour": {
+      "ganzhi": "己亥",
+      "ko": "기해",
+      "stem": "己",
+      "branch": "亥",
+      "basis": "fixed_kst_after_dst_and_default_seoul_longitude_correction",
+      "hour_branch_policy": "23:00-00:59=子 after time correction; day stem uses input solar date; zi-hour never shifts day pillar",
+      "calculation_time": "1990-01-01T22:58:00+09:00"
+    }
+  },
+  "warnings": [],
+  "summary": "己巳년 丙子월 丙寅일 己亥시"
+}

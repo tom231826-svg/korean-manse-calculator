@@ -1,5 +1,7 @@
 # Korean Manse Calculator
 
+[![CI](https://github.com/tom231826-svg/korean-manse-calculator/actions/workflows/ci.yml/badge.svg)](https://github.com/tom231826-svg/korean-manse-calculator/actions/workflows/ci.yml)
+
 Deterministic Korean manse / Four Pillars calculation engine for solar birth dates.
 
 This project provides a calculation-only layer for agents and applications that need reproducible year, month, day, and hour pillars. It does not generate fortune-telling interpretations, counseling copy, compatibility readings, or predictions.
@@ -30,6 +32,14 @@ python3 scripts/calculate_manse.py --date 1990-01-01 --time 23:30 --format json
 python3 scripts/calculate_manse.py --date 1990-01-02 --time 00:30 --format json
 python3 scripts/calculate_manse.py --date 1965-07-07 --time 16:00 --format md
 ```
+
+Example summary:
+
+```text
+己巳년 丙子월 丙寅일 己亥시
+```
+
+See [`examples/sample-output.json`](examples/sample-output.json) for a full JSON output example.
 
 Validate bundled data:
 
@@ -92,6 +102,7 @@ When using Skyfield, `ecliptic_latlon('date')` is required. The default J2000 fr
 | `references/jeolgi/{YYYY}.json` | Solar-term reference files |
 | `references/ilju/{YYYY}.json` | Day ganzhi reference files |
 | `schemas/manse-output.schema.json` | Output JSON schema |
+| `examples/sample-output.json` | Example JSON output |
 | `tests/smoke_test.sh` | Smoke test suite |
 
 ## License
