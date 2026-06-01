@@ -5,21 +5,23 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-3776AB.svg)](https://www.python.org/)
 
-Deterministic, calculation-only, reproducible Korean manse / Four Pillars engine for solar birth dates. It returns structured year, month, day, and hour pillars without generating fortune-telling interpretations, counseling copy, compatibility readings, or predictions.
+한국 만세력/Four Pillars 계산을 위한 결정론적(deterministic), 계산 전용(calculation-only), 재현 가능한(reproducible) 엔진입니다. 양력 생년월일시를 입력받아 년주·월주·일주·시주를 구조화해 반환하며, 운세 해석·상담 문장·궁합 문장·예측 문장은 생성하지 않습니다.
 
-## Why This Exists
+## 왜 만들었나요?
 
-LLMs are good at explaining results, but they should not improvise calendar arithmetic. Four Pillars calculation depends on historical Korean legal time, solar-term boundaries, day ganzhi lookup data, and explicit midnight policies. This repository separates that deterministic calculation layer from any interpretation layer so agents and applications can depend on a repeatable engine result.
+LLM은 계산 결과를 설명하는 데는 유용하지만, 달력 계산 자체를 즉석에서 추론하면 틀릴 수 있습니다. 사주 만세력 계산에는 대한민국 법정시, 과거 서머타임, 24절기 경계, 일진 lookup, 자시/자정 정책처럼 명확한 규칙과 reference data가 필요합니다.
 
-## What It Does
+이 저장소는 해석 레이어와 계산 레이어를 분리하여, 에이전트나 애플리케이션이 반복 가능한 엔진 결과를 신뢰하도록 만드는 것을 목표로 합니다.
 
-- Calculates year, month, day, and hour pillars for solar birth dates from 1950 through 2030.
-- Uses Korea legal time and historical daylight-saving handling through `Asia/Seoul`.
-- Applies a fixed Seoul longitude correction of -32 minutes.
-- Preserves the input solar date for the day pillar, including late-night `子` hour cases.
-- Ships bundled reference data, validation scripts, smoke tests, and a JSON output schema.
+## 무엇을 하나요?
 
-## Quick Start
+- 1950년부터 2030년까지 양력 생년월일시의 년주·월주·일주·시주를 계산합니다.
+- `Asia/Seoul` 기준 대한민국 법정시와 과거 서머타임을 처리합니다.
+- 서울 기준 고정 경도 보정 `-32분`을 적용합니다.
+- 늦은 밤 `子`시 케이스에서도 일주는 입력 양력 날짜를 유지합니다.
+- reference data, 검증 스크립트, smoke test, JSON 출력 스키마를 함께 제공합니다.
+
+## 빠른 시작
 
 ```bash
 python3 scripts/calculate_manse.py --date 1990-01-01 --time 23:30 --format json
@@ -27,22 +29,22 @@ python3 scripts/calculate_manse.py --date 1990-01-02 --time 00:30 --format json
 python3 scripts/calculate_manse.py --date 1965-07-07 --time 16:00 --format md
 ```
 
-Validate bundled data:
+번들 데이터 검증:
 
 ```bash
 python3 scripts/validate_caches.py --start-year 1950 --end-year 2030
 bash tests/smoke_test.sh
 ```
 
-## Output At A Glance
+## 출력 예시
 
-Example summary:
+요약 출력:
 
 ```text
 己巳년 丙子월 丙寅일 己亥시
 ```
 
-Short JSON shape:
+짧은 JSON 형태:
 
 ```json
 {
@@ -57,62 +59,63 @@ Short JSON shape:
 }
 ```
 
-See [`examples/sample-output.json`](examples/sample-output.json) for a full JSON output example.
+전체 JSON 예시는 [`examples/sample-output.json`](examples/sample-output.json)을 참고하세요.
 
-## Accuracy & Data Integrity
+## 정확도와 데이터 무결성
 
-- Day ganzhi lookup covers 29,585 solar dates from 1950-01-01 through 2030-12-31 with validation mismatch count 0.
-- Solar-term references cover 81 years x 24 entries = 1,944 entries.
-- Runtime solar-term cache also validates to 1,944 entries.
-- CI runs compile checks, bundled cache validation, and smoke tests on every push and pull request.
-- LLM calculation is forbidden by policy; callers should use the engine output as the source of truth.
+- 일진 lookup은 1950-01-01부터 2030-12-31까지 총 29,585일을 포함하며, 검증 기준 mismatch 0입니다.
+- 24절기 reference는 81년 x 24개 = 1,944개 entry를 포함합니다.
+- runtime solar-term cache 역시 1,944개 entry로 검증됩니다.
+- CI는 push와 pull request마다 compile check, cache validation, smoke test를 실행합니다.
+- LLM 직접 계산은 금지합니다. 호출자는 엔진 출력값을 계산의 source of truth로 사용해야 합니다.
 
-For details, see [`docs/accuracy.md`](docs/accuracy.md).
+자세한 내용은 [`docs/accuracy.md`](docs/accuracy.md)를 참고하세요.
 
-## Limitations
+## 제한 사항
 
-- Lunar calendar and leap-month conversion are not supported in v0.7.
-- Overseas births and user-provided birthplace correction are not supported.
-- Apparent solar time, true solar time, and equation-of-time correction are not applied.
-- The project is an early public release and currently focuses on a source-run CLI rather than package distribution.
+- v0.7에서는 양력 날짜만 지원합니다.
+- 음력/윤달 변환은 아직 지원하지 않습니다.
+- 해외 출생과 사용자 입력 출생지 보정은 지원하지 않습니다.
+- 진태양시, 시태양시, 균시차 보정은 적용하지 않습니다.
+- 현재는 early public release이며, 패키지 배포보다는 source-run CLI에 초점을 둡니다.
 
-## Data Sources
+## 데이터 출처
 
-The bundled cache is enough for normal calculation over 1950-2030. KASI / data.go.kr keys are only needed if you want to regenerate references from upstream APIs.
+일반 계산에는 저장소에 포함된 cache만으로 충분합니다. KASI/data.go.kr API 키는 upstream API에서 reference data를 재생성할 때만 필요합니다.
 
-No API keys are included in this repository. Create a local `.env` file from `.env.example` if needed, but never commit real keys:
+이 저장소에는 API 키가 포함되어 있지 않습니다. 필요하면 `.env.example`을 복사해 로컬 `.env` 파일을 만들고, 실제 키는 절대 커밋하지 마세요.
 
 ```bash
 cp .env.example .env
 ```
 
-Regenerate from bundled references:
+번들 reference에서 cache 재생성:
 
 ```bash
 python3 scripts/build_kasi_cache.py --start-year 1950 --end-year 2030 --from-bundled-references
 ```
 
-Regenerate from KASI + Skyfield:
+KASI + Skyfield 기반 재생성:
 
 ```bash
 KASI_SPCDE_SERVICE_KEY="<your-data-go-kr-service-key>" \
 python3 scripts/build_kasi_cache.py --start-year 1950 --end-year 2030 --skyfield-data-dir ./skyfield-data
 ```
 
-More source notes are in [`DATA_SOURCES.md`](DATA_SOURCES.md).
+데이터 출처와 재생성 정책은 [`DATA_SOURCES.md`](DATA_SOURCES.md)에 정리되어 있습니다.
 
-## Roadmap
+## 로드맵
 
-The current priority is #2: add JSON schema validation to CI and expand regression cases near solar-term and corrected-time boundaries.
+현재 우선순위는 #2: JSON schema 검증을 CI에 추가하고, 절기 경계 및 보정시각 경계 근처의 회귀 테스트를 확장하는 것입니다.
 
-Other planned work:
+계획된 작업:
 
-- #1: add Python package and CLI distribution workflow.
-- #3: add lunar calendar and leap-month conversion support.
+- #1: Python package 및 CLI 배포 워크플로 추가
+- #3: 음력/윤달 변환 지원 추가
 
-## Contributing
+## 기여하기
 
-Contributions should keep calculation deterministic and interpretation-free. Please run validation before opening a pull request:
+기여는 계산을 결정론적으로 유지하고, 해석 문장 생성을 계산 엔진에 섞지 않는 방향이어야 합니다. Pull request를 열기 전에 아래 검증을 실행해 주세요.
 
 ```bash
 python3 -m json.tool examples/sample-output.json >/dev/null
@@ -120,8 +123,8 @@ python3 scripts/validate_caches.py --start-year 1950 --end-year 2030
 bash tests/smoke_test.sh
 ```
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CHANGELOG.md`](CHANGELOG.md), and [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
+자세한 내용은 [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CHANGELOG.md`](CHANGELOG.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)를 참고하세요.
 
-## License
+## 라이선스
 
-MIT. See [LICENSE](LICENSE).
+MIT. 자세한 내용은 [LICENSE](LICENSE)를 참고하세요.
