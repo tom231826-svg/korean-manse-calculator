@@ -29,7 +29,7 @@ bash tests/smoke_test.sh
 - Day ganzhi data is generated and cross-checked as a lookup table for deterministic runtime use.
 - Lunar input is resolved through an offline lunar-to-solar reverse index before any pillar calculation runs.
 - The preferred lunar conversion regeneration source is KASI / data.go.kr `LrsrCldInfoService/getLunCalInfo`.
-- The bundled v0.8 lunar conversion cache was generated from the MIT-licensed `korean-lunar-calendar` package, which states that it follows KARI/KASI Korean lunar calendar data. A valid KASI Lrsr key should be used for official upstream refreshes.
+- The bundled v0.8 lunar conversion cache was generated from KASI / data.go.kr `LrsrCldInfoService/getLunCalInfo`.
 - Downloaded ephemeris files and API keys are not committed.
 
 See [`../DATA_SOURCES.md`](../DATA_SOURCES.md) for source notes and regeneration commands.

@@ -26,7 +26,7 @@ KASI_LRSR_SERVICE_KEY="<your-data-go-kr-service-key>" \
 python3 scripts/build_kasi_cache.py --start-year 1950 --end-year 2030 --from-bundled-references --include-lunar-conversion
 ```
 
-The current bundled v0.8 lunar conversion cache was generated from the MIT-licensed `korean-lunar-calendar` package, which states that it follows KARI/KASI Korean lunar calendar data and works offline. This was used because no valid KASI Lrsr API key is committed or available in the public repository. Regenerate with KASI before treating a new cache build as an official upstream refresh.
+The current bundled v0.8 lunar conversion cache was generated from KASI / data.go.kr `LrsrCldInfoService/getLunCalInfo`. The generation script also has an optional `--lunar-source korean-lunar-calendar` fallback for local experiments when a KASI key is not available, but KASI is the source of record for the bundled cache.
 
 ## Skyfield / NASA JPL DE421
 
@@ -34,4 +34,4 @@ For years outside the KASI direct range, the reference workflow uses Skyfield wi
 
 ## Notes
 
-The bundled data is intended to make calculation reproducible without requiring live API access. If you regenerate or redistribute derived datasets, review the applicable KASI/data.go.kr, NASA/JPL, and third-party package license terms for your use case.
+The bundled data is intended to make calculation reproducible without requiring live API access. If you regenerate or redistribute derived datasets, review the applicable KASI/data.go.kr, NASA/JPL, and optional third-party package license terms for your use case.

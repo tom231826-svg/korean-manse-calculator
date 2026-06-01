@@ -24,6 +24,7 @@ Korean Manse Calculator 만세력 v0.8 24절기/일진/음력 변환 캐시 생�
 from __future__ import annotations
 
 import argparse
+import calendar
 import math
 import os
 import sys
@@ -330,6 +331,28 @@ def fetch_kasi_lunar_info_for_solar_date(day: date, service_key: str) -> Dict[st
     raise RuntimeError(f"{day.isoformat()} KASI 음력 변환 응답을 정규화하지 못했습니다.")
 
 
+def fetch_kasi_lunar_info_for_solar_month(year: int, month: int, service_key: str) -> List[Dict[str, Any]]:
+    resp = request_kasi_json_or_xml(
+        "LrsrCldInfoService/getLunCalInfo",
+        {"solYear": year, "solMonth": f"{month:02d}", "numOfRows": 31, "pageNo": 1},
+        service_key,
+    )
+    expected_days = calendar.monthrange(year, month)[1]
+    by_day: Dict[str, Dict[str, Any]] = {}
+    for item in extract_items(resp):
+        norm = normalize_lunar_info_item(item, "KASI_LrsrCldInfoService_getLunCalInfo")
+        if norm and norm["solar_date"].startswith(f"{year:04d}-{month:02d}-"):
+            by_day[norm["solar_date"]] = norm
+    if len(by_day) != expected_days:
+        missing = [
+            date(year, month, day).isoformat()
+            for day in range(1, expected_days + 1)
+            if date(year, month, day).isoformat() not in by_day
+        ]
+        raise RuntimeError(f"{year:04d}-{month:02d} KASI 월별 음력 변환 응답이 부족합니다. missing={missing[:5]}")
+    return [by_day[date(year, month, day).isoformat()] for day in range(1, expected_days + 1)]
+
+
 def korean_lunar_calendar_info_for_solar_date(day: date) -> Dict[str, Any]:
     try:
         from korean_lunar_calendar import KoreanLunarCalendar  # type: ignore
@@ -364,10 +387,9 @@ def build_lunar_conversion_cache(
         raise RuntimeError("음력 변환 cache 생성에는 KASI_LRSR_SERVICE_KEY 또는 KASI_SERVICE_KEY가 필요합니다.")
 
     total = 0
-    for day in daterange(date(start_year, 1, 1), date(end_year, 12, 31)):
-        if total % 365 == 0:
-            print(f"[lunar-conversion] indexing from solar {day.isoformat()}...", file=sys.stderr)
-        info = fetch_kasi_lunar_info_for_solar_date(day, service_key) if source == "kasi" else korean_lunar_calendar_info_for_solar_date(day)
+
+    def consume(info: Dict[str, Any]) -> None:
+        nonlocal total
         lunar_year = _lunar_year_from_iso(info["lunar_date"])
         key = f"{info['lunar_date']}:{'leap' if info['lunar_leap'] else 'regular'}"
         bucket = by_lunar_year.setdefault(lunar_year, {})
@@ -376,6 +398,18 @@ def build_lunar_conversion_cache(
             duplicate_conflicts.append(f"{key}: {prev} vs {info['solar_date']}")
         bucket[key] = info["solar_date"]
         total += 1
+
+    if source == "kasi":
+        for year in range(start_year, end_year + 1):
+            for month in range(1, 13):
+                print(f"[lunar-conversion] indexing from KASI month {year:04d}-{month:02d}...", file=sys.stderr)
+                for info in fetch_kasi_lunar_info_for_solar_month(year, month, service_key):
+                    consume(info)
+    else:
+        for day in daterange(date(start_year, 1, 1), date(end_year, 12, 31)):
+            if total % 365 == 0:
+                print(f"[lunar-conversion] indexing from solar {day.isoformat()}...", file=sys.stderr)
+            consume(korean_lunar_calendar_info_for_solar_date(day))
 
     if duplicate_conflicts:
         raise RuntimeError(f"음력 변환 cache 중복 충돌: {duplicate_conflicts[:5]}")

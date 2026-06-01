@@ -363,8 +363,8 @@
       "solar_end": "2030-12-31",
       "solar_start": "1950-01-01"
     },
-    "generated_at": "2026-06-01T15:41:37.060479+09:00",
-    "source": "korean_lunar_calendar_py_0.3.1_kari",
+    "generated_at": "2026-06-01T15:57:51.026618+09:00",
+    "source": "KASI_LrsrCldInfoService_getLunCalInfo",
     "version": "0.8.0"
   }
 }

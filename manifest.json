@@ -89,7 +89,7 @@
     "lunar_to_solar": {
       "coverage": "solar dates 1950-01-01 ~ 2030-12-31 reverse-indexed by lunar date and leap-month flag",
       "preferred_regeneration": "KASI LrsrCldInfoService/getLunCalInfo",
-      "bundled_source": "korean_lunar_calendar_py_0.3.1_kari",
+      "bundled_source": "KASI_LrsrCldInfoService_getLunCalInfo",
       "runtime_priority": [
         "data/lunar_to_solar_by_year/{YYYY}.json"
       ]

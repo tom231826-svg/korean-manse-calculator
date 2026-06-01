@@ -22,8 +22,8 @@ Adds Korean lunar calendar and leap-month input support while preserving the exi
 
 ### Data
 
-- Bundled lunar conversion cache is generated from `korean-lunar-calendar` 0.3.1, an MIT-licensed offline package that states it follows KARI/KASI Korean lunar calendar data.
-- KASI/data.go.kr remains the preferred source for official lunar cache regeneration when a valid `KASI_LRSR_SERVICE_KEY` is available.
+- Bundled lunar conversion cache is generated from KASI/data.go.kr `LrsrCldInfoService/getLunCalInfo`.
+- `korean-lunar-calendar` remains available only as an optional local fallback source for cache generation when a KASI key is not available.
 
 ### Limitations
 
